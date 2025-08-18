@@ -19,13 +19,6 @@
       --accent: #34d399; /* green */
       --ring: 0 0 0 2px rgba(34,211,238,.35);
     }
-    body.light {
-    --bg: #f9fafb;
-    --card: #fff;
-    --muted: #555;
-    --text: #0b0f14;
-    --ring: 0 0 0 2px rgba(34,211,238,.25);
-  }
     * { box-sizing: border-box; }
     html, body {
       margin: 0; padding: 0; background: var(--bg); color: var(--text);
@@ -49,10 +42,6 @@
       filter: blur(120px); opacity: .5; animation: spin 18s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* Top bar */
-    .top-bar { display:flex; justify-content:space-between; align-items:center; position:absolute; top:20px; width:calc(100% - 40px); }
-    .menu, .theme-toggle { cursor:pointer; font-size:24px; color:var(--text); }
 
     /* --- Hero --- */
     .hero { text-align: center; position: relative; }
@@ -109,12 +98,8 @@
 </head>
 <body>
   <!-- Banner + Hero -->
-   <header class="banner">
+  <header class="banner">
     <div class="glow" aria-hidden="true"></div>
-  <div class="top-bar">
-    <div class="menu">☰</div>
-    <div class="theme-toggle" id="theme-toggle">🌙</div>
-  </div>
     <div class="container hero">
       <div class="pill">Ethiopia • Mobile · AI · Cloud</div>
       <h1 class="h1">Hi, I'm <span style="background: linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent;">Naomer</span></h1>
@@ -245,19 +230,12 @@
   </footer>
 
   <script>
-    // Dark/Light mode toggle
-  const toggle = document.getElementById('theme-toggle');
-  toggle.addEventListener('click', ()=>{
-    document.body.classList.toggle('light');
-    toggle.textContent = document.body.classList.contains('light') ? '🌞' : '🌙';
-  });
-    
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Typewriter phrases
     const phrases = [
-      "Software Engineer",
+      "Full‑stack Software Engineer",
       "Mobile • AI • Cloud",
       "Building reliable, beautiful apps",
       "Open‑source + Learning, always"

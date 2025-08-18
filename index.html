@@ -124,9 +124,9 @@
         <span class="chip">Dart</span>
         <span class="chip">Firebase</span>
         <span class="chip">Python</span>
-        <span class="chip">TensorFlow</span>
         <span class="chip">Node.js</span>
-        <span class="chip">PostgreSQL</span>
+        <span class="chip">React Native</span>
+        <span class="chip">Postman</span>
       </div>
     </div>
   </section>
@@ -143,7 +143,7 @@
             <h3>Vee — Space Explorer</h3>
             <p class="muted">Flutter app using NASA APIs: APOD, Mars rover shots, ISS tracker, plus an AI chatbot with voice input.</p>
             <div class="tags">
-              <span class="tag">Flutter</span><span class="tag">NASA API</span><span class="tag">OpenAI</span>
+              <span class="tag">Flutter</span><span class="tag">NASA API</span><span class="tag">OpenRouter API AI</span>
             </div>
             <p>
               <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
@@ -155,10 +155,10 @@
         <article class="card">
           <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="AI mobile features"/>
           <div class="p">
-            <h3>Smart Notes</h3>
-            <p class="muted">Cross‑platform notes with offline sync, on‑device summarization, and semantic search.</p>
+            <h3>Task App</h3>
+            <p class="muted">Flutter mobile app for providers & takers with Google Maps & Arabic RTL.</p>
             <div class="tags">
-              <span class="tag">Flutter</span><span class="tag">SQLite</span><span class="tag">Embeddings</span>
+              <span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">AWS</span>
             </div>
             <p>
               <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
@@ -170,10 +170,10 @@
         <article class="card">
           <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" alt="Cloud dashboard"/>
           <div class="p">
-            <h3>Pulse Dashboard</h3>
-            <p class="muted">Realtime analytics dashboard with auth, role‑based access, and serverless functions.</p>
+            <h3>Digital Card</h3>
+            <p class="muted">Flutter e-commerce app replicating Alsaif Gallery UI/UX.</p>
             <div class="tags">
-              <span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">Edge</span>
+              <span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">AWS</span>
             </div>
             <p>
               <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
@@ -230,12 +230,19 @@
   </footer>
 
   <script>
+    // Dark/Light mode toggle
+  const toggle = document.getElementById('theme-toggle');
+  toggle.addEventListener('click', ()=>{
+    document.body.classList.toggle('light');
+    toggle.textContent = document.body.classList.contains('light') ? '🌞' : '🌙';
+  });
+    
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Typewriter phrases
     const phrases = [
-      "Full‑stack Software Engineer",
+      "Software Engineer",
       "Mobile • AI • Cloud",
       "Building reliable, beautiful apps",
       "Open‑source + Learning, always"

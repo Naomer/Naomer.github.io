@@ -19,6 +19,13 @@
       --accent: #34d399; /* green */
       --ring: 0 0 0 2px rgba(34,211,238,.35);
     }
+    body.light {
+    --bg: #f9fafb;
+    --card: #fff;
+    --muted: #555;
+    --text: #0b0f14;
+    --ring: 0 0 0 2px rgba(34,211,238,.25);
+  }
     * { box-sizing: border-box; }
     html, body {
       margin: 0; padding: 0; background: var(--bg); color: var(--text);
@@ -42,6 +49,10 @@
       filter: blur(120px); opacity: .5; animation: spin 18s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Top bar */
+    .top-bar { display:flex; justify-content:space-between; align-items:center; position:absolute; top:20px; width:calc(100% - 40px); }
+    .menu, .theme-toggle { cursor:pointer; font-size:24px; color:var(--text); }
 
     /* --- Hero --- */
     .hero { text-align: center; position: relative; }

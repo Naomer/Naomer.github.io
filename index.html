@@ -1,84 +1,312 @@
-<style>
-  /* Root colors */
-  :root {
-    --bg: #0b0f14;
-    --card: #121722;
-    --text: #e6edf3;
-    --muted: #9aa4b2;
-    --brand: #22d3ee;
-    --brand-2: #a78bfa;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naomer | Software Engineer</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 
-  html, body {
-    margin:0; padding:0;
-    font-family:'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    scroll-behavior: smooth;
-  }
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --card: #121722;
+      --text: #e6edf3;
+      --muted: #9aa4b2;
+      --brand1: #22d3ee;
+      --brand2: #a78bfa;
+      --accent: #34d399;
+      --ring: 0 0 0 2px rgba(34,211,238,.35);
+    }
 
-  a { text-decoration: none; color: inherit; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; border-radius: 12px; }
 
-  /* Hero */
-  header.banner {
-    min-height: 100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    background: radial-gradient(circle at top center, rgba(34,211,238,0.1), transparent 70%),
-                radial-gradient(circle at bottom right, rgba(167,139,250,0.1), transparent 60%);
-    overflow:hidden;
-    position:relative;
-  }
+    /* Container */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-  .hero h1 {
-    font-size: clamp(3rem, 6vw, 6rem);
-    font-weight: 800;
-    line-height: 1.1;
-    background: linear-gradient(135deg, var(--brand), var(--brand-2));
-    -webkit-background-clip: text;
-    color: transparent;
-    margin:0.5rem 0;
-  }
+    /* --- Banner / Hero --- */
+    header {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
 
-  .hero .lead {
-    font-size: clamp(1.25rem,2.5vw,1.5rem);
-    color: var(--muted);
-    margin-bottom:2rem;
-  }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(1200px 500px at 50% -20%, rgba(34,211,238,.25), transparent),
+                  radial-gradient(800px 400px at 80% 0%, rgba(167,139,250,.20), transparent),
+                  linear-gradient(180deg, #0b0f14 0%, #0b0f14 100%);
+      z-index: -1;
+    }
 
-  .btns { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
 
-  .btn {
-    padding: 0.75rem 1.25rem;
-    border-radius: 12px;
-    font-weight:600;
-    border:1px solid rgba(255,255,255,0.1);
-    background:#0f141b;
-    transition: all 0.3s ease;
-  }
-  .btn:hover { transform: translateY(-2px); box-shadow: 0 0 10px rgba(34,211,238,0.4); }
-  .btn.primary { background: linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff; }
+    h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--brand1), var(--brand2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-  /* Sections */
-  section { padding: 6rem 2rem; max-width: 1100px; margin:0 auto; }
-  h2 { font-size: 2rem; margin-bottom:1rem; }
-  .muted { color: var(--muted); }
+    .type {
+      font-size: clamp(16px, 2.3vw, 20px);
+      color: var(--muted);
+      border-right: 2px solid var(--brand1);
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    }
 
-  /* Grid cards */
-  .grid { display:grid; gap:2rem; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
-  .card { background: var(--card); border-radius: 16px; overflow:hidden; border:1px solid rgba(255,255,255,0.06); transition: all 0.3s ease; }
-  .card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 10px 25px rgba(34,211,238,0.15); }
-  .card img { width:100%; height:200px; object-fit:cover; }
-  .card .p { padding:1rem; }
-  .tags { display:flex; gap:0.5rem; flex-wrap:wrap; margin:0.5rem 0; }
-  .tag { background: rgba(255,255,255,0.06); padding:0.3rem 0.6rem; border-radius:999px; font-size:0.8rem; }
+    .btns {
+      margin-top: 32px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-  /* Footer */
-  footer { padding:3rem 2rem; text-align:center; color:var(--muted); }
-  .socials { display:flex; justify-content:center; gap:1rem; margin-top:1rem; }
-  .icon-btn { width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:10px; background:#0f141b; border:1px solid rgba(255,255,255,.08); transition: all 0.3s; }
-  .icon-btn:hover { box-shadow: 0 0 10px rgba(34,211,238,0.35); transform: translateY(-2px); }
+    .btn {
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #0f141b;
+      color: #fff;
+    }
+    .btn:hover { box-shadow: var(--ring); transform: translateY(-2px); }
+    .btn.primary { background: linear-gradient(135deg, var(--brand1), var(--brand2)); }
 
-</style>
+    /* --- Sections --- */
+    section { padding: 80px 0; }
+    h2 { font-size: 28px; margin-bottom: 24px; }
+    .muted { color: var(--muted); }
+
+    /* --- Skills --- */
+    .chips { display: flex; flex-wrap: wrap; gap: 12px; }
+    .chip {
+      padding: 8px 16px;
+      background: #0f141b;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px;
+      font-size: 14px;
+      color: #d7dee7;
+    }
+
+    /* --- Project Grid --- */
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--ring); }
+    .card .p { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+    .tag {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.06);
+      color: #c6d2de;
+    }
+
+    /* --- Contact --- */
+    form { display: grid; gap: 16px; max-width: 560px; margin-top: 16px; }
+    input, textarea {
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: #0f141b;
+      color: #fff;
+    }
+
+    /* --- Footer --- */
+    footer {
+      text-align: center;
+      padding: 60px 0;
+      color: var(--muted);
+    }
+    .socials { display: flex; justify-content: center; gap: 14px; margin-top: 12px; }
+    .icon-btn {
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 10px;
+      background: #0f141b;
+      border: 1px solid rgba(255,255,255,.08);
+      transition: 0.2s;
+    }
+    .icon-btn:hover { box-shadow: var(--ring); transform: translateY(-1px); }
+
+    @media(max-width:480px){
+      .btn{width:100%; justify-content:center;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <header>
+    <div class="pill">RAG • Mobile • AI • Cloud</div>
+    <h1>Naomer</h1>
+    <div class="type" id="type"></div>
+    <div class="btns">
+      <a class="btn primary" href="#projects">See Projects</a>
+      <a class="btn" href="https://github.com/Naomer" target="_blank">GitHub</a>
+      <a class="btn" href="mailto:nolan@proton.me">Contact</a>
+      <a class="btn primary" href="https://github.com/Naomer/Naomer.github.io/raw/main/Naomer_Resume.pdf" target="_blank">Resume</a>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2>About</h2>
+      <p class="muted">Software Engineer crafting delightful mobile apps and smart AI features. I love building fast, reliable products with Flutter, Firebase, and modern cloud backends.</p>
+      <div class="chips">
+        <span class="chip">Flutter</span>
+        <span class="chip">Dart</span>
+        <span class="chip">Firebase</span>
+        <span class="chip">Python</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">React Native</span>
+        <span class="chip">Postman</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="https://source.unsplash.com/800x800/?space,phone,ai" alt="Vee App">
+          <div class="p">
+            <h3>Vee — Space Explorer</h3>
+            <p class="muted">Flutter app using NASA APIs: APOD, Mars rover, ISS tracker, AI chatbot with voice input.</p>
+            <div class="tags"><span class="tag">Flutter</span><span class="tag">NASA API</span><span class="tag">AI</span></div>
+            <div class="btns" style="margin-top:auto;">
+              <a class="btn" href="#">Live</a>
+              <a class="btn" href="https://github.com/Naomer/Vee" target="_blank">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://source.unsplash.com/800x800/?mobile,app,service" alt="Task App">
+          <div class="p">
+            <h3>Task App</h3>
+            <p class="muted">Flutter mobile app for Service providers & takers with Google Maps & Arabic RTL.</p>
+            <div class="tags"><span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">AWS</span></div>
+            <div class="btns" style="margin-top:auto;">
+              <a class="btn" href="#">Live</a>
+              <a class="btn" href="https://github.com/Naomer/tskapp" target="_blank">Code</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="muted">Have a project in mind? Let’s talk.</p>
+      <div class="chips">
+        <a class="chip" href="mailto:nahtheol@proton.me">Email</a>
+        <a class="chip" href="https://wa.me/251940413977" target="_blank">WhatsApp</a>
+        <a class="chip" href="https://x.com/nahtheol" target="_blank">X</a>
+        <a class="chip" href="https://linkedin.com/in/olliemer" target="_blank">LinkedIn</a>
+      </div>
+      <form action="https://formspree.io/f/mvgqnygp" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button class="btn primary" type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>© <span id="year"></span> Naomer. All rights reserved.</div>
+    <div class="socials">
+      <a class="icon-btn" href="https://github.com/Naomer" target="_blank" aria-label="GitHub">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.26.82-.577v-2.234c-3.338.726-4.033-1.61-4.033-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.776.418-1.305.762-1.605-2.665-.3-5.467-1.332-5.467-5.932 0-1.31.468-2.382 1.236-3.222-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.234 1.912 1.234 3.222 0 4.61-2.807 5.628-5.479 5.922.43.37.823 1.102.823 2.222v3.293c0 .319.218.694.825.576C20.565 21.796 24 17.298 24 12c0-6.63-5.373-12-12-12z"/></svg>
+      </a>
+      <a class="icon-btn" href="https://x.com/nahtheol" target="_blank" aria-label="X">
+        X
+      </a>
+      <a class="icon-btn" href="https://linkedin.com/in/olliemer" target="_blank" aria-label="LinkedIn">
+        in
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Typewriter
+    const phrases = ["Software Engineer", "Mobile • AI • Cloud", "Building reliable apps", "Open-source + Learning"];
+    const el = document.getElementById('type');
+    let i = 0, char = 0, typing = true;
+
+    function typeLoop(){
+      const current = phrases[i];
+      if(typing){
+        el.textContent = current.slice(0, ++char);
+        if(char === current.length){ typing = false; setTimeout(typeLoop, 1200); return; }
+        setTimeout(typeLoop, 50);
+      } else {
+        el.textContent = current.slice(0, --char);
+        if(char === 0){ typing = true; i=(i+1)%phrases.length; }
+        setTimeout(typeLoop, 30);
+      }
+    }
+    typeLoop();
+  </script>
+</body>
+</html>

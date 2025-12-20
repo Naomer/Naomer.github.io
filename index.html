@@ -1,52 +1,278 @@
-<div class="grid">
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Naomer | Software Engineer</title>
 
-  <!-- Lira -->
-  <article class="card">
-    <img
-      src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/4801bf7ed6a659cbd266479d1139ae0ce308221a/lr.jpg"
-      alt="Lira AI Companion"
-      loading="lazy"
-    />
-    <div class="p">
-      <h3>Lira — Voice-First AI Companion</h3>
-      <p class="muted">
-        Voice-first AI companion providing real-time conversations, context-aware responses,
-        emotional check-ins, and on-demand image generation.
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <meta name="description" content="Portfolio of Naomer — Software Engineer (Mobile • AI • Cloud)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --card: #121722;
+      --muted: #9aa4b2;
+      --text: #e6edf3;
+      --brand: #22d3ee; /* cyan */
+      --brand-2: #a78bfa; /* violet */
+      --accent: #34d399; /* green */
+      --ring: 0 0 0 2px rgba(34,211,238,.35);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0; background: var(--bg); color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* --- Animated gradient banner --- */
+    .banner {
+      position: relative;
+      background: radial-gradient(1200px 500px at 50% -20%, rgba(34,211,238,.25), transparent),
+                  radial-gradient(800px 400px at 80% 0%, rgba(167,139,250,.20), transparent),
+                  linear-gradient(180deg, #0b0f14 0%, #0b0f14 100%);
+      overflow: hidden;
+      padding: 80px 0 40px;
+    }
+    .glow {
+      position: absolute; inset: -20% -10% auto; height: 320px;
+      background: conic-gradient(from 90deg at 50% 50%, rgba(34,211,238,.20), rgba(167,139,250,.20), rgba(52,211,153,.2), rgba(34,211,238,.20));
+      filter: blur(120px); opacity: .5; animation: spin 18s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* --- Hero --- */
+    .hero { text-align: center; position: relative; }
+    .pill {
+      display: inline-flex; gap: 8px; align-items: center;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      padding: 8px 12px; border-radius: 999px; color: var(--muted); font-size: 14px;
+      backdrop-filter: blur(8px);
+    }
+    .h1 { font-size: clamp(36px, 6vw, 64px); line-height: 1.05; margin: 18px 0 10px; font-weight: 800; }
+    .lead { font-size: clamp(16px, 2.3vw, 20px); color: var(--muted); }
+
+    /* --- Typewriter --- */
+    .type { position: relative; display: inline-block; border-right: 2px solid var(--brand); white-space: nowrap; overflow: hidden; }
+    .type[data-typing="true"] { animation: caret 800ms steps(1) infinite; }
+    @keyframes caret { 50% { border-color: transparent; } }
+
+    /* buttons */
+    .btns { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.1); background: #0f141b; color: #fff; font-weight: 600; }
+    .btn:hover { box-shadow: var(--ring); transform: translateY(-1px); }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); }
+
+    /* --- Sections --- */
+    section { padding: 60px 0; }
+    h2 { font-size: 28px; margin: 0 0 18px; }
+    .muted { color: var(--muted); }
+
+    /* --- Skills chips --- */
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip { padding: 8px 12px; border-radius: 999px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); color: #d7dee7; font-size: 14px; }
+
+    /* --- Grid cards --- */
+    .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card { background: var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; overflow: hidden; }
+    .card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+    .card .p { padding: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+    .tag { font-size: 12px; padding: 6px 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); border-radius: 999px; color: #c6d2de; }
+
+    /* --- Footer --- */
+    footer { padding: 40px 0 60px; text-align: center; color: var(--muted); }
+    .socials { display: flex; gap: 14px; justify-content: center; margin-top: 10px; }
+    .icon-btn { width: 42px; height: 42px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); }
+    .icon-btn:hover { box-shadow: var(--ring); transform: translateY(-1px); }
+    svg { display: block }
+
+    /* --- Responsive tweaks --- */
+    @media (max-width: 480px) {
+      .btn { width: 100%; justify-content: center; }
+      .card img { height: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Banner + Hero -->
+  <header class="banner">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="container hero">
+      <div class="pill">RAG • Mobile · AI · Cloud</div>
+      <h1 class="h1">Hi, I'm <span style="background: linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent;">Naomer</span></h1>
+      <p class="lead">
+        <span class="type" id="type"></span>
       </p>
-      <div class="tags">
-        <span class="tag">AI</span>
-        <span class="tag">Voice</span>
-        <span class="tag">LLMs</span>
-        <span class="tag">Image Gen</span>
+      <div class="btns">
+        <a class="btn primary" href="#projects">See Projects</a>
+        <a class="btn" href="https://github.com/Naomer" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="mailto:nolan@proton.me">Contact</a>
+      <a class="btn primary" href="/Naol_Mer_Resume.pdf" target="_blank" rel="noopener">
+    View Resume
+</a>
       </div>
-      <p>
-        <a class="btn" href="https://github.com/Naomer/lira" target="_blank" rel="noopener">Code</a>
-      </p>
     </div>
-  </article>
+  </header>
 
-  <!-- Fitly -->
-  <article class="card">
-    <img
-      src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/4801bf7ed6a659cbd266479d1139ae0ce308221a/ftly.png"
-      alt="Fitly Fitness App"
-      loading="lazy"
-    />
-    <div class="p">
-      <h3>Fitly — Fitness Tracking App</h3>
-      <p class="muted">
-        Modern fitness tracking app built with Flutter.
-        Track workouts, monitor progress, and stay motivated with a clean UI.
-      </p>
-      <div class="tags">
-        <span class="tag">Flutter</span>
-        <span class="tag">Fitness</span>
-        <span class="tag">Mobile</span>
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2>About</h2>
+      <p class="muted">Software Engineer crafting delightful mobile apps and smart AI features. I love building fast, reliable products with Flutter, Firebase, and modern cloud backends.</p>
+      <div class="chips" style="margin-top:14px">
+        <span class="chip">Flutter</span>
+        <span class="chip">Dart</span>
+        <span class="chip">Firebase</span>
+        <span class="chip">Python</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">React Native</span>
+        <span class="chip">Postman</span>
       </div>
-      <p>
-        <a class="btn" href="https://github.com/Naomer/fitly" target="_blank" rel="noopener">Code</a>
-      </p>
     </div>
-  </article>
+  </section>
 
-</div>
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div class="grid">
+        <!-- Card 1 -->
+<article class="card">
+  <img src="https://source.unsplash.com/800x800/?space,phone,ai" alt="Space Tech AI (mobile mockup)" loading="lazy"
+       onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22%3E%3Crect width=%22120%22 height=%22120%22 rx=%2216%22 fill=%22%230b1223%22/%3E%3Ccircle cx=%2260%22 cy=%2248%22 r=%2224%22 fill=%22%2322c1c3%22/%3E%3Cpath d=%22M86 18 L96 12 L90 26 Z%22 fill=%22%23ffd166%22/%3E%3C/svg%3E'" />
+  <div class="p">
+    <h3>Vee — Space Explorer</h3>
+    <p class="muted">Flutter app using NASA APIs: APOD, Mars rover shots, ISS tracker, plus an AI chatbot with voice input.</p>
+    <div class="tags">
+      <span class="tag">Flutter</span><span class="tag">NASA API</span><span class="tag">OpenRouter API AI</span>
+    </div>
+    <p>
+      <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+      <a class="btn" href="https://github.com/Naomer/Vee" target="_blank" rel="noopener">Code</a>
+    </p>
+  </div>
+</article>
+<!-- Card 2 -->
+<article class="card">
+  <img src="https://source.unsplash.com/800x800/?mobile,app,service" alt="Service App (mobile mockup)" loading="lazy"
+       onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22%3E%3Crect width=%22120%22 height=%22120%22 rx=%2216%22 fill=%22%23ffffff%22 stroke=%22%23000000%22 stroke-opacity=%220.06%22/%3E%3Cg transform=%22translate(20,20)%22%3E%3Crect x=%226%22 y=%226%22 width=%2256%22 height=%2292%22 rx=%228%22 fill=%22%23eaeaea%22/%3E%3Crect x=%2218%22 y=%2222%22 width=%2232%22 height=%2212%22 rx=%223%22 fill=%22%23333%22/%3E%3Cpath d=%22M10 80 L62 80 L38 56 Z%22 fill=%22%23333%22/%3E%3C/g%3E%3C/svg%3E'" />
+  <div class="p">
+    <h3>Task App</h3>
+    <p class="muted">Flutter mobile app for Service providers & takers with Google Maps & Arabic RTL.</p>
+    <div class="tags">
+      <span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">AWS</span>
+    </div>
+    <p>
+      <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+      <a class="btn" href="https://github.com/Naomer/tskapp" target="_blank" rel="noopener">Code</a>
+    </p>
+  </div>
+</article>
+        <!-- Card 3 -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" alt="Cloud dashboard"/>
+          <div class="p">
+            <h3>Digital Card</h3>
+            <p class="muted">Flutter e-commerce app replicating Alsaif Gallery UI/UX.</p>
+            <div class="tags">
+              <span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">AWS</span>
+            </div>
+            <p>
+              <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="btn" href="https://github.com/Naomer/dgcard" target="_blank" rel="noopener">Code</a>
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="muted">Have a project in mind? Let’s talk.</p>
+      <div class="chips" style="margin:12px 0 20px">
+        <a class="chip" href="mailto:nahtheol@proton.me">Email</a>
+        <a class="chip" href="https://wa.me/251940413977" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="chip" href="https://x.com/nahtheol" target="_blank" rel="noopener">X (Twitter)</a>
+        <a class="chip" href="https://linkedin.com/in/olliemer" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <!-- Optional Formspree form: replace YOUR_FORMSPREE_ID first! -->
+      <form action="https://formspree.io/f/mvgqnygp" method="POST" style="display:grid; gap:12px; max-width:560px;">
+        <input name="name" placeholder="Your name" required style="padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f141b; color:#fff;" />
+        <input type="email" name="email" placeholder="Your email" required style="padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f141b; color:#fff;" />
+        <textarea name="message" placeholder="Tell me about your idea" rows="5" required style="padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f141b; color:#fff;"></textarea>
+        <button class="btn primary" style="width:max-content">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div>© <span id="year"></span> Naomer. All rights reserved.</div>
+      <div class="socials">
+        <a class="icon-btn" href="https://github.com/Naomer" target="_blank" aria-label="GitHub" rel="noopener">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.26.82-.577v-2.234c-3.338.726-4.033-1.61-4.033-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.776.418-1.305.762-1.605-2.665-.3-5.467-1.332-5.467-5.932 0-1.31.468-2.382 1.236-3.222-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.234 1.912 1.234 3.222 0 4.61-2.807 5.628-5.479 5.922.43.37.823 1.102.823 2.222v3.293c0 .319.218.694.825.576C20.565 21.796 24 17.298 24 12c0-6.63-5.373-12-12-12z"/>
+  </svg>
+</a>
+
+        <a class="icon-btn" href="https://x.com/nahtheol" target="_blank" aria-label="X" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.52 8.58L22.5 22h-6.2l-4.86-5.64L5.8 22H2.5l8.04-9.17L1.9 2h6.3l4.39 5.02L18.24 2Zm-1.09 18h1.86L7.93 4h-1.9l11.11 16Z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://linkedin.com/in/olliemer" target="_blank" aria-label="LinkedIn" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM0 8.5h5v15H0v-15ZM8 8.5h4.8v2.1h.1c.7-1.3 2.5-2.7 5.1-2.7 5.4 0 6.4 3.5 6.4 8.1V23.5h-5v-7.3c0-1.7 0-3.9-2.4-3.9s-2.8 1.9-2.8 3.8v7.4H8v-15Z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://instagram.com/nahtheol" target="_blank" aria-label="Instagram" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5ZM18 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:naol@creative-codes.sa" aria-label="Email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5Zm3-1a1 1 0 0 0-1 1v.2l8 5.3 8-5.3V5a1 1 0 0 0-1-1H5Zm15 4.6-7.5 5a1 1 0 0 1-1 0L4 8.6V19a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8.6Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Typewriter phrases
+    const phrases = [
+      "Software Engineer",
+      "Mobile • AI • Cloud",
+      "Building reliable, beautiful apps",
+      "Open‑source + Learning, always"
+    ];
+    const typeEl = document.getElementById('type');
+    let i = 0, char = 0, typing = true;
+
+    function loop(){
+      const current = phrases[i];
+      if(typing){
+        typeEl.dataset.typing = "true";
+        typeEl.textContent = current.slice(0, ++char);
+        if(char === current.length){ typing = false; setTimeout(loop, 1200); return; }
+        setTimeout(loop, 55);
+      } else {
+        typeEl.dataset.typing = "false";
+        typeEl.textContent = current.slice(0, --char);
+        if(char === 0){ typing = true; i = (i+1) % phrases.length; }
+        setTimeout(loop, 32);
+      }
+    }
+    loop();
+  </script>
+</body>
+</html>

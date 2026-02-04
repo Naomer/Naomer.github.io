@@ -11,440 +11,146 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-  
-  <meta name="description" content="Naomer — Flutter developer building AI-native mobile apps. Real-time voice companions, space explorers, fitness trackers, and more.">
+
+  <meta name="description" content="Naomer — AI-native mobile builder specializing in Flutter, voice-first AI, and real-time systems.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0b0f14;
-      --card: #121722;
-      --muted: #9aa4b2;
-      --text: #e6edf3;
-      --brand: #22d3ee;
-      --brand-2: #a78bfa;
-      --accent: #34d399;
-      --ring: 0 0 0 2px rgba(34,211,238,.35);
+      --bg:#0b0f14;--card:#121722;--muted:#9aa4b2;--text:#e6edf3;
+      --brand:#22d3ee;--brand-2:#a78bfa;--accent:#34d399;
+      --ring:0 0 0 2px rgba(34,211,238,.35);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      height: 100%;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      overflow-x: hidden;
-    }
-    a { color: inherit; text-decoration: none; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:Inter,system-ui}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px;z-index:2;position:relative}
 
-    canvas#bg-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
+    canvas{position:fixed;inset:0;z-index:1;pointer-events:none}
 
-    .banner {
-      position: relative;
-      padding: 120px 0 60px;
-      text-align: center;
-    }
-    .glow {
-      position: absolute; inset: -20% -10% auto; height: 400px;
-      background: conic-gradient(from 90deg at 50% 50%, rgba(34,211,238,.15), rgba(167,139,250,.15), rgba(52,211,153,.15), rgba(34,211,238,.15));
-      filter: blur(140px); opacity: .6; animation: spin 24s linear infinite;
-      z-index: 1;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    header{padding:120px 0 60px;text-align:center;position:relative}
+    .glow{position:absolute;inset:-20% -10% auto;height:400px;
+      background:conic-gradient(from 90deg,rgba(34,211,238,.15),rgba(167,139,250,.15),rgba(52,211,153,.15));
+      filter:blur(140px);opacity:.6;animation:spin 24s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
 
-    .pill {
-      display: inline-flex; gap: 8px; align-items: center;
-      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
-      padding: 8px 14px; border-radius: 999px; color: var(--muted); font-size: 14px;
-      backdrop-filter: blur(8px);
-    }
-    .h1 { font-size: clamp(42px, 7vw, 80px); line-height: 1.05; margin: 20px 0 12px; font-weight: 800; }
-    .lead { font-size: clamp(18px, 2.5vw, 24px); color: var(--muted); margin-bottom: 12px; }
-    .sublead { font-size: 20px; color: var(--muted); opacity: 0.9; }
+    .pill{display:inline-flex;gap:8px;padding:8px 14px;border-radius:999px;
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+      color:var(--muted);font-size:14px}
 
-    .type { position: relative; display: inline-block; border-right: 2px solid var(--brand); white-space: nowrap; overflow: hidden; }
-    .type[data-typing="true"] { animation: caret 800ms steps(1) infinite; }
-    @keyframes caret { 50% { border-color: transparent; } }
+    h1{font-size:clamp(42px,7vw,80px);margin:20px 0 12px;font-weight:800}
+    .lead{font-size:clamp(18px,2.5vw,24px);color:var(--muted)}
+    .sublead{font-size:20px;color:var(--muted)}
 
-    .btns { margin-top: 32px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .btn { padding: 14px 24px; border-radius: 14px; border: 1px solid rgba(255,255,255,.1); background: #0f141b; color: #fff; font-weight: 600; transition: all .3s; }
-    .btn:hover { box-shadow: var(--ring); transform: translateY(-2px); }
-    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); border: none; }
+    .type{border-right:2px solid var(--brand);white-space:nowrap}
+    .btns{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .btn{padding:14px 24px;border-radius:14px;border:1px solid rgba(255,255,255,.1);
+      background:#0f141b;font-weight:600;transition:.3s}
+    .btn:hover{box-shadow:var(--ring);transform:translateY(-2px)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));border:none}
 
-    section { padding: 100px 0; position: relative; z-index: 2; }
-    h2 { font-size: 36px; margin-bottom: 28px; text-align: center; }
-    .muted { color: var(--muted); }
+    section{padding:100px 0}
+    h2{text-align:center;font-size:36px;margin-bottom:28px}
+    .muted{color:var(--muted)}
 
-    .chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
-    .chip { padding: 10px 16px; border-radius: 999px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); color: #d7dee7; font-size: 15px; transition: all .2s; }
-    .chip:hover { background: rgba(34,211,238,.15); }
+    .chips{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .chip{padding:10px 16px;border-radius:999px;background:#0f141b;
+      border:1px solid rgba(255,255,255,.08)}
 
-    .grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
-    .card { background: var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: 20px; overflow: hidden; transition: transform .3s, box-shadow .3s; }
-    .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,.3); }
-    .card img { width: 100%; height: 200px; object-fit: cover; }
-    .card .p { padding: 24px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
-    .tag { font-size: 13px; padding: 7px 12px; background: rgba(255,255,255,.06); border-radius: 999px; color: #c6d2de; }
-    .stars { font-size: 14px; color: var(--accent); font-weight: 600; margin: 10px 0; }
+    .timeline{max-width:800px;margin:0 auto}
+    .entry{margin-bottom:40px}
+    .entry h3{font-size:20px}
+    .date{color:var(--muted);margin-bottom:12px}
 
-    ul.muted { max-width: 700px; margin: 0 auto; list-style: none; }
-    ul.muted li { font-size: 17px; line-height: 1.8; margin-bottom: 16px; position: relative; padding-left: 24px; }
-    ul.muted li::before { content: "→"; position: absolute; left: 0; color: var(--brand); }
+    ul{list-style:none}
+    ul li{margin-bottom:14px;padding-left:22px;position:relative}
+    ul li::before{content:"→";position:absolute;left:0;color:var(--brand)}
 
-    .timeline { max-width: 800px; margin: 0 auto; }
-    .entry { margin-bottom: 40px; }
-    .entry h3 { font-size: 20px; margin-bottom: 8px; }
-    .entry .date { font-size: 15px; color: var(--muted); margin-bottom: 12px; }
-
-    footer { padding: 80px 0; text-align: center; color: var(--muted); position: relative; z-index: 2; }
-    .socials { display: flex; gap: 18px; justify-content: center; margin-top: 20px; }
-    .icon-btn { width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 14px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); transition: all .3s; }
-    .icon-btn:hover { box-shadow: var(--ring); transform: translateY(-3px); }
-
-    @media (max-width: 640px) {
-      .btns { flex-direction: column; align-items: center; }
-      .btn { width: 80%; }
-      .grid { grid-template-columns: 1fr; }
-    }
+    footer{text-align:center;padding:80px 0;color:var(--muted)}
   </style>
 </head>
+
 <body>
-  <canvas id="bg-canvas"></canvas>
+<canvas id="bg"></canvas>
 
-  <!-- Hero -->
-  <header class="banner">
-    <div class="glow" aria-hidden="true"></div>
-    <div class="container">
-      <div class="pill">Voice-First AI • Flutter • Real-Time • Cloud</div>
-      <h1 class="h1">Hi, I'm <span style="background: linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent;">Naomer</span></h1>
-      <p class="lead">Building AI-native mobile experiences that feel natural</p>
-      <p class="sublead">
-        <span class="type" id="type"></span>
-      </p>
-      <div class="btns">
-        <a class="btn primary" href="#projects">See Projects</a>
-        <a class="btn" href="https://github.com/Naomer" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="mailto:nahtheol@proton.me">Contact</a>
-        <a class="btn primary" href="/Naol_Mer_Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
-      </div>
+<header>
+  <div class="glow"></div>
+  <div class="container">
+    <div class="pill">Voice-First AI • Flutter • Real-Time Systems</div>
+    <h1>Hi, I’m <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;color:transparent">Naomer</span></h1>
+    <p class="lead">Building AI-native mobile systems that scale</p>
+    <p class="sublead"><span class="type" id="type"></span></p>
+
+    <div class="btns">
+      <a class="btn primary" href="#projects">See Projects</a>
+      <a class="btn" href="https://github.com/Naomer" target="_blank">GitHub</a>
+      <a class="btn" href="mailto:nahtheol@proton.me">Contact</a>
+      <a class="btn primary" href="/Naol_Mer_Resume.pdf" target="_blank">View Resume</a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- About -->
-  <section id="about">
-    <div class="container">
-      <h2>About</h2>
-      <p class="muted" style="max-width: 800px; margin: 0 auto 32px; font-size: 18px; line-height: 1.7;">
-        I take production seriously, building scalable Flutter apps — from marketplaces and e-commerce to fitness, space exploration, and voice-first AI companions. 
-      </p>
-      <p class="muted" style="max-width: 800px; margin: 0 auto 32px; font-size: 18px; line-height: 1.7;">
-       At Creative Codes (Saudi Arabia), I worked as a remote Flutter Developer, shipping real-time, payment-enabled, multilingual RTL apps with maps and modern LLM integrations. I graduated from Haramaya University in 2024, where my final honors project focused on building an AI-powered mobile system for preventing exam cheating.
-      </p>
-      <div class="chips">
-        <span class="chip">Flutter</span>
-        <span class="chip">Dart</span>
-        <span class="chip">Voice AI</span>
-        <span class="chip">FastAPI</span>
-        <span class="chip">Firebase</span>
-        <span class="chip">Supabase</span>
-        <span class="chip">Node.js</span>
-        <span class="chip">AWS</span>
-        <span class="chip">OpenRouter</span>
-        <span class="chip">Google Maps</span>
-        <span class="chip">RTL</span>
-      </div>
-    </div>
-  </section>
+<section id="about">
+  <div class="container">
+    <h2>About</h2>
+    <p class="muted" style="max-width:800px;margin:0 auto 24px;font-size:18px">
+      I take production seriously, building scalable Flutter apps from marketplaces and e-commerce to fitness, space exploration, and voice-first AI companions.
+    </p>
+    <p class="muted" style="max-width:800px;margin:0 auto;font-size:18px">
+      At Creative Codes (Saudi Arabia), shipping real-time, payment-enabled, multilingual RTL apps with maps and modern LLM integrations. I Graduated from Haramaya University in 2024, with an honors project focused on AI-driven mobile integrity and fraud-prevention systems.
+    </p>
+  </div>
+</section>
 
-  <!-- Experience -->
-  <section id="experience">
-    <div class="container timeline">
-      <h2>Experience</h2>
-      <div class="entry">
-        <h3>Flutter Developer (Remote) — Creative Codes, Saudi Arabia</h3>
-        <div class="date">Aug 2024 – Oct 2025</div>
-        <ul class="muted">
-          <li>Built & maintained cross-platform apps with Flutter/Dart, REST/GraphQL APIs, and Firebase real-time features</li>
-          <li>End-to-end lifecycles, UI/UX optimization (multilingual payments) — ~25% faster loads</li>
-          <li>Integrated third-party services (payments/ML models); deployed to Play Store/App Store</li>
-          <li>Remote Agile collaboration with international team</li>
-        </ul>
-      </div>
-      <div class="entry">
-        <h3>IT Intern — OBN, Adama, Ethiopia</h3>
-        <div class="date">Oct 2023 – Nov 2023</div>
-        <ul class="muted">
-          <li>Managed IT infrastructure, databases, and networks</li>
-          <li>Resolved 50+ tickets (95% satisfaction)</li>
-          <li>Automated SDLC docs/processes for efficiency</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<section id="experience">
+  <div class="container timeline">
+    <h2>Experience</h2>
 
-  <!-- Projects -->
-  <section id="projects">
-    <div class="container">
-      <h2>Featured Projects</h2>
-      <div class="grid">
-
-        <!-- Lira -->
-        <article class="card">
-          <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/4801bf7ed6a659cbd266479d1139ae0ce308221a/lr.jpg" alt="Lira AI Voice Companion" loading="lazy">
-          <div class="p">
-            <h3>Lira — Real-Time Voice-First AI Companion</h3>
-            <p class="muted">Always-on voice buddy with continuous listening, context memory, natural responses, and image generation.</p>
-            <p class="muted" style="font-size:14px; line-height:1.5;">
-              • Low-latency streaming + multimodal output<br>
-              • Flutter + FastAPI + OpenRouter LLMs<br>
-              • Supports accents & underrepresented languages
-            </p>
-            <div class="stars">⭐ 14 stars • 2 forks</div>
-            <div class="tags">
-              <span class="tag">Flutter</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">Voice AI</span>
-              <span class="tag">OpenRouter</span>
-            </div>
-            <p><a class="btn" href="https://github.com/Naomer/lira" target="_blank" rel="noopener">View Code</a></p>
-          </div>
-        </article>
-
-        <!-- Vee -->
-        <article class="card">
-          <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/be967035b20c740bcccbde6534074dcb29dc433e/IMG_7150.JPG" alt="Vee Space Explorer" loading="lazy">
-          <div class="p">
-            <h3>Vee — Space Exploration App</h3>
-            <p class="muted">NASA APIs + voice-to-text AI chatbot for conversational space discovery.</p>
-            <p class="muted" style="font-size:14px; line-height:1.5;">
-              • Real-time ISS/Mars data<br>
-              • Dark/light themes<br>
-              • Ongoing development
-            </p>
-            <div class="stars">⭐ 21 stars • 6 forks</div>
-            <div class="tags">
-              <span class="tag">Flutter</span>
-              <span class="tag">NASA API</span>
-              <span class="tag">AI Chatbot</span>
-            </div>
-            <p><a class="btn" href="https://github.com/Naomer/Vee" target="_blank" rel="noopener">View Code</a></p>
-          </div>
-        </article>
-
-        <!-- Fitly -->
-        <article class="card">
-          <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/4801bf7ed6a659cbd266479d1139ae0ce308221a/ftly.png" alt="Fitly Fitness App" loading="lazy">
-          <div class="p">
-            <h3>Fitly — Fitness Tracking App</h3>
-            <p class="muted">Dark-themed workout tracker with progress monitoring and animations.</p>
-            <p class="muted" style="font-size:14px; line-height:1.5;">
-              • Muscle group tracking<br>
-              • Supabase realtime DB<br>
-              • Ongoing
-            </p>
-            <div class="stars">⭐ 14 stars • 1 fork</div>
-            <div class="tags">
-              <span class="tag">Flutter</span>
-              <span class="tag">Fitness</span>
-              <span class="tag">Supabase</span>
-            </div>
-            <p><a class="btn" href="https://github.com/Naomer/fitly" target="_blank" rel="noopener">View Code</a></p>
-          </div>
-        </article>
-
-        <!-- Task App -->
-        <article class="card">
-          <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/be967035b20c740bcccbde6534074dcb29dc433e/IMG_7151.JPG" alt="Task App" loading="lazy">
-          <div class="p">
-            <h3>Task App — Service Marketplace</h3>
-            <p class="muted">Provider/client app with Google Maps, live tracking, Arabic RTL.</p>
-            <p class="muted" style="font-size:14px; line-height:1.5;">
-              • Node.js + MongoDB + AWS<br>
-              • Beta with 20+ users
-            </p>
-            <div class="stars">⭐ 11 stars • 1 fork</div>
-            <div class="tags">
-              <span class="tag">Flutter</span>
-              <span class="tag">Google Maps</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">RTL</span>
-            </div>
-            <p><a class="btn" href="https://github.com/Naomer/tskapp" target="_blank" rel="noopener">View Code</a></p>
-          </div>
-        </article>
-
-        <!-- Digital Card -->
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" alt="Digital Card e-commerce" loading="lazy">
-          <div class="p">
-            <h3>Digital Card — E-Commerce App</h3>
-            <p class="muted">Alsaif Gallery-inspired shopping flows with cart & checkout.</p>
-            <p class="muted" style="font-size:14px; line-height:1.5;">
-              • Node.js backend<br>
-              • AWS hosting
-            </p>
-            <div class="stars">⭐ 12 stars • 2 forks</div>
-            <div class="tags">
-              <span class="tag">Flutter</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">MongoDB</span>
-              <span class="tag">AWS</span>
-            </div>
-            <p><a class="btn" href="https://github.com/Naomer/dgcard" target="_blank" rel="noopener">View Code</a></p>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Fun Facts -->
-  <section id="fun">
-    <div class="container">
-      <h2>Fun Facts</h2>
+    <div class="entry">
+      <h3>Flutter Developer (Remote) — Creative Codes</h3>
+      <div class="date">Aug 2024 – Oct 2025</div>
       <ul class="muted">
-        <li>I built Lira because I was tired of typing — now I just talk to my phone</li>
-        <li>Space tech obsessed (that's why Vee exists)</li>
-        <li>From Ethiopia, passionate about better AI support for underrepresented languages & accents</li>
-        <li>You won’t find me in Fortnite 😁</li>
+        <li>Built and maintained production Flutter apps using Firebase and REST/GraphQL APIs</li>
+        <li>Owned end-to-end app lifecycles and optimized multilingual, payment-heavy UX flows</li>
+        <li>Integrated maps, payment gateways, and LLM-powered services</li>
+        <li>Collaborated remotely within an international Agile team</li>
       </ul>
     </div>
-  </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <ul class="muted"><li>Have a project in mind? Let’s talk.</li>
-      <div class="chips" style="margin:12px 0 20px">
-        <a class="chip" href="mailto:nahtheol@proton.me">Email</a>
-        <a class="chip" href="https://wa.me/251940413977" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="chip" href="https://x.com/nahtheol" target="_blank" rel="noopener">X (Twitter)</a>
-        <a class="chip" href="https://linkedin.com/in/olliemer" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-      <!-- Optional Formspree form: replace YOUR_FORMSPREE_ID first! -->
-      <form action="https://formspree.io/f/mvgqnygp" method="POST" style="display:grid; gap:12px; max-width:560px;">
-        <input name="name" placeholder="Your name" required style="padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f141b; color:#fff;" />
-        <input type="email" name="email" placeholder="Your email" required style="padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f141b; color:#fff;" />
-        <textarea name="message" placeholder="Tell me about your idea" rows="5" required style="padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f141b; color:#fff;"></textarea>
-        <button class="btn primary" style="width:max-content">Send</button>
-      </form>
+    <div class="entry">
+      <h3>IT Intern — OBN, Ethiopia</h3>
+      <div class="date">Oct 2023 – Nov 2023</div>
+      <ul class="muted">
+        <li>Maintained internal IT infrastructure and databases</li>
+        <li>Resolved 50+ support tickets with high user satisfaction</li>
+        <li>Automated internal documentation workflows</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>© <span id="year"></span> Naomer. All rights reserved.</p>
-      <div class="socials">
-        <a class="icon-btn" href="https://github.com/Naomer" target="_blank" aria-label="GitHub" rel="noopener">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.26.82-.577v-2.234c-3.338.726-4.033-1.61-4.033-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.776.418-1.305.762-1.605-2.665-.3-5.467-1.332-5.467-5.932 0-1.31.468-2.382 1.236-3.222-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.234 1.912 1.234 3.222 0 4.61-2.807 5.628-5.479 5.922.43.37.823 1.102.823 2.222v3.293c0 .319.218.694.825.576C20.565 21.796 24 17.298 24 12c0-6.63-5.373-12-12-12z"/></svg>
-        </a>
-        <a class="icon-btn" href="https://x.com/nahtheol" target="_blank" aria-label="X" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.52 8.58L22.5 22h-6.2l-4.86-5.64L5.8 22H2.5l8.04-9.17L1.9 2h6.3l4.39 5.02L18.24 2Zm-1.09 18h1.86L7.93 4h-1.9l11.11 16Z"/></svg>
-        </a>
-          <a class="icon-btn" href="https://instagram.com/nahtheol" target="_blank" aria-label="Instagram" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5ZM18 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"/></svg>
-        </a>
-        <a class="icon-btn" href="mailto:naolm662@gmail.com" aria-label="Email">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5Zm3-1a1 1 0 0 0-1 1v.2l8 5.3 8-5.3V5a1 1 0 0 0-1-1H5Zm15 4.6-7.5 5a1 1 0 0 1-1 0L4 8.6V19a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8.6Z"/></svg>
-        </a>
-      </div>
-    </div>
-  </footer>
+<footer>
+  <p>© <span id="year"></span> Naomer</p>
+</footer>
 
-  <script>
-    // Canvas floating squares (kept subtle & performant)
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-    let width, height;
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
+  const phrases=["Voice-First AI Builder","Flutter • AI • Mobile","Real-Time Systems"];
+  let i=0,c=0,dir=1;
+  const el=document.getElementById("type");
 
-    const squares = [];
-    const count = 40;
-    for (let i = 0; i < count; i++) {
-      squares.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        size: Math.random() * 50 + 20,
-        speedY: Math.random() * 0.8 + 0.2,
-        speedX: (Math.random() - 0.5) * 0.4,
-        opacity: Math.random() * 0.2 + 0.05,
-        rotation: 0,
-        rotSpeed: (Math.random() - 0.5) * 0.02
-      });
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      squares.forEach(s => {
-        ctx.save();
-        ctx.translate(s.x + s.size/2, s.y + s.size/2);
-        ctx.rotate(s.rotation);
-        ctx.fillStyle = `rgba(34, 211, 238, ${s.opacity})`;
-        ctx.fillRect(-s.size/2, -s.size/2, s.size, s.size);
-        ctx.restore();
-
-        s.y += s.speedY;
-        s.x += s.speedX;
-        s.rotation += s.rotSpeed;
-
-        if (s.y > height) s.y = -s.size;
-        if (s.x > width + s.size) s.x = -s.size;
-        if (s.x < -s.size) s.x = width;
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Typewriter
-    const phrases = [
-      "Voice-First AI Builder",
-      "Flutter • AI • Mobile",
-      "Real-time experiences",
-      "Open-source enthusiast"
-    ];
-    const typeEl = document.getElementById('type');
-    let i = 0, char = 0, typing = true;
-
-    function loop() {
-      const current = phrases[i];
-      if (typing) {
-        typeEl.dataset.typing = "true";
-        typeEl.textContent = current.slice(0, ++char);
-        if (char === current.length) {
-          typing = false;
-          setTimeout(loop, 1500);
-          return;
-        }
-        setTimeout(loop, 60);
-      } else {
-        typeEl.dataset.typing = "false";
-        typeEl.textContent = current.slice(0, --char);
-        if (char === 0) {
-          typing = true;
-          i = (i + 1) % phrases.length;
-        }
-        setTimeout(loop, 35);
-      }
-    }
-    loop();
-  </script>
+  function loop(){
+    el.textContent=phrases[i].slice(0,c+=dir);
+    if(c===phrases[i].length||c===0){
+      if(c===0)i=(i+1)%phrases.length;
+      dir*=-1;
+      setTimeout(loop,1200);
+    } else setTimeout(loop,60);
+  }
+  loop();
+</script>
 </body>
 </html>

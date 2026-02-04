@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,84 +33,87 @@
       color: var(--text);
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       overflow-x: hidden;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 50px 50px;
-      background-position: 0 0;
     }
     a { color: inherit; text-decoration: none; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
 
-    .banner {
-      position: relative;
-      padding: 120px 0 60px;
-      text-align: center;
-    }
-    .glow {
-      position: absolute; inset: -20% -10% auto; height: 400px;
-      background: conic-gradient(from 90deg at 50% 50%, rgba(34,211,238,.15), rgba(167,139,250,.15), rgba(52,211,153,.15), rgba(34,211,238,.15));
-      filter: blur(140px); opacity: .6; animation: spin 24s linear infinite;
-      z-index: 1;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+canvas#bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
 
-    .pill {
-      display: inline-flex; gap: 8px; align-items: center;
-      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
-      padding: 8px 14px; border-radius: 999px; color: var(--muted); font-size: 14px;
-      backdrop-filter: blur(8px);
-    }
-    .h1 { font-size: clamp(42px, 7vw, 80px); line-height: 1.05; margin: 20px 0 12px; font-weight: 800; }
-    .lead { font-size: clamp(18px, 2.5vw, 24px); color: var(--muted); margin-bottom: 12px; }
-    .sublead { font-size: 20px; color: var(--muted); opacity: 0.9; }
+.banner {
+  position: relative;
+  padding: 120px 0 60px;
+  text-align: center;
+}
+.glow {
+  position: absolute; inset: -20% -10% auto; height: 400px;
+  background: conic-gradient(from 90deg at 50% 50%, rgba(34,211,238,.15), rgba(167,139,250,.15), rgba(52,211,153,.15), rgba(34,211,238,.15));
+  filter: blur(140px); opacity: .6; animation: spin 24s linear infinite;
+  z-index: 1;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 
-    .type { position: relative; display: inline-block; border-right: 2px solid var(--brand); white-space: nowrap; overflow: hidden; }
-    .type[data-typing="true"] { animation: caret 800ms steps(1) infinite; }
-    @keyframes caret { 50% { border-color: transparent; } }
+.pill {
+  display: inline-flex; gap: 8px; align-items: center;
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  padding: 8px 14px; border-radius: 999px; color: var(--muted); font-size: 14px;
+  backdrop-filter: blur(8px);
+}
+.h1 { font-size: clamp(42px, 7vw, 80px); line-height: 1.05; margin: 20px 0 12px; font-weight: 800; }
+.lead { font-size: clamp(18px, 2.5vw, 24px); color: var(--muted); margin-bottom: 12px; }
+.sublead { font-size: 20px; color: var(--muted); opacity: 0.9; }
 
-    .btns { margin-top: 32px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .btn { padding: 14px 24px; border-radius: 14px; border: 1px solid rgba(255,255,255,.1); background: #0f141b; color: #fff; font-weight: 600; transition: all .3s; }
-    .btn:hover { box-shadow: var(--ring); transform: translateY(-2px); }
-    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); border: none; }
+.type { position: relative; display: inline-block; border-right: 2px solid var(--brand); white-space: nowrap; overflow: hidden; }
+.type[data-typing="true"] { animation: caret 800ms steps(1) infinite; }
+@keyframes caret { 50% { border-color: transparent; } }
 
-    section { padding: 100px 0; position: relative; z-index: 2; }
-    h2 { font-size: 36px; margin-bottom: 28px; text-align: center; }
-    .muted { color: var(--muted); }
+.btns { margin-top: 32px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn { padding: 14px 24px; border-radius: 14px; border: 1px solid rgba(255,255,255,.1); background: #0f141b; color: #fff; font-weight: 600; transition: all .3s; }
+.btn:hover { box-shadow: var(--ring); transform: translateY(-2px); }
+.btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); border: none; }
 
-    .chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
-    .chip { padding: 10px 16px; border-radius: 999px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); color: #d7dee7; font-size: 15px; transition: all .2s; }
-    .chip:hover { background: rgba(34,211,238,.15); }
+section { padding: 100px 0; position: relative; z-index: 2; }
+h2 { font-size: 36px; margin-bottom: 28px; text-align: center; }
+.muted { color: var(--muted); }
 
-    .grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
-    .card { background: var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: 20px; overflow: hidden; transition: transform .3s, box-shadow .3s; }
-    .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,.3); }
-    .card img { width: 100%; height: 200px; object-fit: cover; }
-    .card .p { padding: 24px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
-    .tag { font-size: 13px; padding: 7px 12px; background: rgba(255,255,255,.06); border-radius: 999px; color: #c6d2de; }
-    .stars { font-size: 14px; color: var(--accent); font-weight: 600; margin: 10px 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
+.chip { padding: 10px 16px; border-radius: 999px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); color: #d7dee7; font-size: 15px; transition: all .2s; }
+.chip:hover { background: rgba(34,211,238,.15); }
 
-    ul.muted { max-width: 700px; margin: 0 auto; list-style: none; }
-    ul.muted li { font-size: 17px; line-height: 1.8; margin-bottom: 16px; position: relative; padding-left: 24px; }
-    ul.muted li::before { content: "→"; position: absolute; left: 0; color: var(--brand); }
+.grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+.card { background: var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: 20px; overflow: hidden; transition: transform .3s, box-shadow .3s; }
+.card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,.3); }
+.card img { width: 100%; height: 200px; object-fit: cover; }
+.card .p { padding: 24px; }
+.tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
+.tag { font-size: 13px; padding: 7px 12px; background: rgba(255,255,255,.06); border-radius: 999px; color: #c6d2de; }
+.stars { font-size: 14px; color: var(--accent); font-weight: 600; margin: 10px 0; }
 
-    .timeline { max-width: 800px; margin: 0 auto; }
-    .entry { margin-bottom: 40px; }
-    .entry h3 { font-size: 20px; margin-bottom: 8px; }
-    .entry .date { font-size: 15px; color: var(--muted); margin-bottom: 12px; }
+ul.muted { max-width: 700px; margin: 0 auto; list-style: none; }
+ul.muted li { font-size: 17px; line-height: 1.8; margin-bottom: 16px; position: relative; padding-left: 24px; }
+ul.muted li::before { content: "→"; position: absolute; left: 0; color: var(--brand); }
 
-    footer { padding: 80px 0; text-align: center; color: var(--muted); position: relative; z-index: 2; }
-    .socials { display: flex; gap: 18px; justify-content: center; margin-top: 20px; }
-    .icon-btn { width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 14px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); transition: all .3s; }
-    .icon-btn:hover { box-shadow: var(--ring); transform: translateY(-3px); }
+.timeline { max-width: 800px; margin: 0 auto; }
+.entry { margin-bottom: 40px; }
+.entry h3 { font-size: 20px; margin-bottom: 8px; }
+.entry .date { font-size: 15px; color: var(--muted); margin-bottom: 12px; }
 
-    @media (max-width: 640px) {
-      .btns { flex-direction: column; align-items: center; }
-      .btn { width: 80%; }
-      .grid { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
+footer { padding: 80px 0; text-align: center; color: var(--muted); position: relative; z-index: 2; }
+.socials { display: flex; gap: 18px; justify-content: center; margin-top: 20px; }
+.icon-btn { width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 14px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); transition: all .3s; }
+.icon-btn:hover { box-shadow: var(--ring); transform: translateY(-3px); }
+
+@media (max-width: 640px) {
+  .btns { flex-direction: column; align-items: center; }
+  .btn { width: 80%; }
+  .grid { grid-template-columns: 1fr; }
+}  </style></head>
 <body>
+  <canvas id="bg-canvas"></canvas>
 
   <!-- Hero -->
   <header class="banner">
@@ -143,22 +145,21 @@
       At Creative Codes (Saudi Arabia), shipping real-time, payment-enabled, multilingual RTL apps with maps and modern LLM integrations.
       I Graduated from Haramaya University in 2024, with an honors project focused on AI-driven mobile integrity and fraud-prevention systems.
   
-      </p>
-      <!-- <div class="chips">
-        <span class="chip">Flutter</span>
-        <span class="chip">Dart</span>
-        <span class="chip">Voice AI</span>
-        <span class="chip">FastAPI</span>
-        <span class="chip">Firebase</span>
-        <span class="chip">Supabase</span>
-        <span class="chip">Node.js</span>
-        <span class="chip">AWS</span>
-        <span class="chip">OpenRouter</span>
-        <span class="chip">Google Maps</span>
-        <span class="chip">RTL</span>
-      </div> -->
-    </div>
-  </section>
+  </p>
+  <!-- <div class="chips">
+    <span class="chip">Flutter</span>
+    <span class="chip">Dart</span>
+    <span class="chip">Voice AI</span>
+    <span class="chip">FastAPI</span>
+    <span class="chip">Firebase</span>
+    <span class="chip">Supabase</span>
+    <span class="chip">Node.js</span>
+    <span class="chip">AWS</span>
+    <span class="chip">OpenRouter</span>
+    <span class="chip">Google Maps</span>
+    <span class="chip">RTL</span>
+  </div> -->
+</div>  </section>
 
   <!-- Experience -->
   <section id="experience">
@@ -192,115 +193,122 @@
       <h2>Featured Projects</h2>
       <div class="grid">
 
-        <!-- Lira -->
-        <article class="card">
-          <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/4801bf7ed6a659cbd266479d1139ae0ce308221a/lr.jpg" alt="Lira AI Voice Companion" loading="lazy">
-          <div class="p">
-            <h3>Lira — Real-Time Voice-First AI Companion</h3>
-            <p class="muted">Always-on voice buddy with continuous listening, context memory, natural responses, and image generation.</p>
-            <p class="muted" style="font-size:14px; line-height:1.5;">
-              • Low-latency streaming + multimodal output<br>
-              • Flutter + FastAPI + OpenRouter LLMs<br>
-              • Supports accents & underrepresented languages
-            </p>
-            <div class="stars">⭐ 14 stars • 2 forks</div>
-            <div class="tags">
-              <span class="tag">Flutter</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">Voice AI</span>
-              <span class="tag">OpenRouter</span>
-            </div>
-            <p><a class="btn" href="https://github.com/Naomer/lira" target="_blank" rel="noopener">View Code</a></p>
-          </div>
-        </article>
+    <!-- Lira -->
+    <article class="card">
+      <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/4801bf7ed6a659cbd266479d1139ae0ce308221a/lr.jpg" alt="Lira AI Voice Companion" loading="lazy">
+      <div class="p">
+        <h3>Lira — Real-Time Voice-First AI Companion</h3>
+        <p class="muted">Always-on voice buddy with continuous listening, context memory, natural responses, and image generation.</p>
+        <p class="muted" style="font-size:14px; line-height:1.5;">
+          • Low-latency streaming + multimodal output
 
-        <!-- Vee -->
-        <article class="card">
-          <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/be967035b20c740bcccbde6534074dcb29dc433e/IMG_7150.JPG" alt="Vee Space Explorer" loading="lazy">
-          <div class="p">
-            <h3>Vee — Space Exploration App</h3>
-            <p class="muted">NASA APIs + voice-to-text AI chatbot for conversational space discovery.</p>
-            <p class="muted" style="font-size:14px; line-height:1.5;">
-              • Real-time ISS/Mars data<br>
-              • Dark/light themes<br>
-              • Ongoing development
-            </p>
-            <div class="stars">⭐ 21 stars • 6 forks</div>
-            <div class="tags">
-              <span class="tag">Flutter</span>
-              <span class="tag">NASA API</span>
-              <span class="tag">AI Chatbot</span>
-            </div>
-            <p><a class="btn" href="https://github.com/Naomer/Vee" target="_blank" rel="noopener">View Code</a></p>
-          </div>
-        </article>
+          • Flutter + FastAPI + OpenRouter LLMs
 
-        <!-- Fitly -->
-        <article class="card">
-          <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/4801bf7ed6a659cbd266479d1139ae0ce308221a/ftly.png" alt="Fitly Fitness App" loading="lazy">
-          <div class="p">
-            <h3>Fitly — Fitness Tracking App</h3>
-            <p class="muted">Dark-themed workout tracker with progress monitoring and animations.</p>
-            <p class="muted" style="font-size:14px; line-height:1.5;">
-              • Muscle group tracking<br>
-              • Supabase realtime DB<br>
-              • Ongoing
-            </p>
-            <div class="stars">⭐ 14 stars • 1 fork</div>
-            <div class="tags">
-              <span class="tag">Flutter</span>
-              <span class="tag">Fitness</span>
-              <span class="tag">Supabase</span>
-            </div>
-            <p><a class="btn" href="https://github.com/Naomer/fitly" target="_blank" rel="noopener">View Code</a></p>
-          </div>
-        </article>
-
-        <!-- Task App -->
-        <article class="card">
-          <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/be967035b20c740bcccbde6534074dcb29dc433e/IMG_7151.JPG" alt="Task App" loading="lazy">
-          <div class="p">
-            <h3>Task App — Service Marketplace</h3>
-            <p class="muted">Provider/client app with Google Maps, live tracking, Arabic RTL.</p>
-            <p class="muted" style="font-size:14px; line-height:1.5;">
-              • Node.js + MongoDB + AWS<br>
-              • Beta with 20+ users
-            </p>
-            <div class="stars">⭐ 11 stars • 1 fork</div>
-            <div class="tags">
-              <span class="tag">Flutter</span>
-              <span class="tag">Google Maps</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">RTL</span>
-            </div>
-            <p><a class="btn" href="https://github.com/Naomer/tskapp" target="_blank" rel="noopener">View Code</a></p>
-          </div>
-        </article>
-
-        <!-- Digital Card -->
-        <!-- <article class="card">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" alt="Digital Card e-commerce" loading="lazy">
-          <div class="p">
-            <h3>Digital Card — E-Commerce App</h3>
-            <p class="muted">Alsaif Gallery-inspired shopping flows with cart & checkout.</p>
-            <p class="muted" style="font-size:14px; line-height:1.5;">
-              • Node.js backend<br>
-              • AWS hosting
-            </p>
-            <div class="stars">⭐ 12 stars • 2 forks</div>
-            <div class="tags">
-              <span class="tag">Flutter</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">MongoDB</span>
-              <span class="tag">AWS</span>
-            </div>
-            <p><a class="btn" href="https://github.com/Naomer/dgcard" target="_blank" rel="noopener">View Code</a></p>
-          </div>
-        </article> -->
-
+          • Supports accents & underrepresented languages
+        </p>
+        <div class="stars"> 14 stars • 2 forks</div>
+        <div class="tags">
+          <span class="tag">Flutter</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Voice AI</span>
+          <span class="tag">OpenRouter</span>
+        </div>
+        <p><a class="btn" href="https://github.com/Naomer/lira" target="_blank" rel="noopener">View Code</a></p>
       </div>
-    </div>
-  </section>
+    </article>
+
+    <!-- Vee -->
+    <article class="card">
+      <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/be967035b20c740bcccbde6534074dcb29dc433e/IMG_7150.JPG" alt="Vee Space Explorer" loading="lazy">
+      <div class="p">
+        <h3>Vee — Space Exploration App</h3>
+        <p class="muted">NASA APIs + voice-to-text AI chatbot for conversational space discovery.</p>
+        <p class="muted" style="font-size:14px; line-height:1.5;">
+          • Real-time ISS/Mars data
+
+          • Dark/light themes
+
+          • Ongoing development
+        </p>
+        <div class="stars"> 21 stars • 6 forks</div>
+        <div class="tags">
+          <span class="tag">Flutter</span>
+          <span class="tag">NASA API</span>
+          <span class="tag">AI Chatbot</span>
+        </div>
+        <p><a class="btn" href="https://github.com/Naomer/Vee" target="_blank" rel="noopener">View Code</a></p>
+      </div>
+    </article>
+
+    <!-- Fitly -->
+    <article class="card">
+      <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/4801bf7ed6a659cbd266479d1139ae0ce308221a/ftly.png" alt="Fitly Fitness App" loading="lazy">
+      <div class="p">
+        <h3>Fitly — Fitness Tracking App</h3>
+        <p class="muted">Dark-themed workout tracker with progress monitoring and animations.</p>
+        <p class="muted" style="font-size:14px; line-height:1.5;">
+          • Muscle group tracking
+
+          • Supabase realtime DB
+
+          • Ongoing
+        </p>
+        <div class="stars"> 14 stars • 1 fork</div>
+        <div class="tags">
+          <span class="tag">Flutter</span>
+          <span class="tag">Fitness</span>
+          <span class="tag">Supabase</span>
+        </div>
+        <p><a class="btn" href="https://github.com/Naomer/fitly" target="_blank" rel="noopener">View Code</a></p>
+      </div>
+    </article>
+
+    <!-- Task App -->
+    <article class="card">
+      <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/be967035b20c740bcccbde6534074dcb29dc433e/IMG_7151.JPG" alt="Task App" loading="lazy">
+      <div class="p">
+        <h3>Task App — Service Marketplace</h3>
+        <p class="muted">Provider/client app with Google Maps, live tracking, Arabic RTL.</p>
+        <p class="muted" style="font-size:14px; line-height:1.5;">
+          • Node.js + MongoDB + AWS
+
+          • Beta with 20+ users
+        </p>
+        <div class="stars"> 11 stars • 1 fork</div>
+        <div class="tags">
+          <span class="tag">Flutter</span>
+          <span class="tag">Google Maps</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">RTL</span>
+        </div>
+        <p><a class="btn" href="https://github.com/Naomer/tskapp" target="_blank" rel="noopener">View Code</a></p>
+      </div>
+    </article>
+
+    <!-- Digital Card -->
+    <!-- <article class="card">
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" alt="Digital Card e-commerce" loading="lazy">
+      <div class="p">
+        <h3>Digital Card — E-Commerce App</h3>
+        <p class="muted">Alsaif Gallery-inspired shopping flows with cart & checkout.</p>
+        <p class="muted" style="font-size:14px; line-height:1.5;">
+          • Node.js backend
+
+          • AWS hosting
+        </p>
+        <div class="stars"> 12 stars • 2 forks</div>
+        <div class="tags">
+          <span class="tag">Flutter</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">AWS</span>
+        </div>
+        <p><a class="btn" href="https://github.com/Naomer/dgcard" target="_blank" rel="noopener">View Code</a></p>
+      </div>
+    </article> -->
+
+  </div>
+</div>  </section>
 
   <!-- Fun Facts -->
   <section id="fun">
@@ -310,7 +318,7 @@
         <li>Built Lira because typing felt inefficient, now I just talk to my phone</li>
         <li>Deeply interested in neural tech and space tech (Vee exists for a reason)</li>
         <li>From Ethiopia, focused on better AI support for underrepresented languages and accents</li>
-        <li>You won’t find me in Fortnite 😁</li>
+        <li>You won’t find me in Fortnite </li>
       </ul>
     </div>
   </section>
@@ -358,6 +366,55 @@
   </footer>
 
   <script>
+    // Canvas floating squares (kept subtle & performant)
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const squares = [];
+    const count = 40;
+    for (let i = 0; i < count; i++) {
+      squares.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 50 + 20,
+        speedY: Math.random() * 0.8 + 0.2,
+        speedX: (Math.random() - 0.5) * 0.4,
+        opacity: Math.random() * 0.2 + 0.05,
+        rotation: 0,
+        rotSpeed: (Math.random() - 0.5) * 0.02
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      squares.forEach(s => {
+        ctx.save();
+        ctx.translate(s.x + s.size/2, s.y + s.size/2);
+        ctx.rotate(s.rotation);
+        ctx.fillStyle = `rgba(34, 211, 238, ${s.opacity})`;
+        ctx.fillRect(-s.size/2, -s.size/2, s.size, s.size);
+        ctx.restore();
+
+        s.y += s.speedY;
+        s.x += s.speedX;
+        s.rotation += s.rotSpeed;
+
+        if (s.y > height) s.y = -s.size;
+        if (s.x > width + s.size) s.x = -s.size;
+        if (s.x < -s.size) s.x = width;
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -396,3 +453,4 @@
   </script>
 </body>
 </html>
+

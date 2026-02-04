@@ -27,97 +27,87 @@
       --accent: #34d399;
       --ring: 0 0 0 2px rgba(34,211,238,.35);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
     html, body {
-      height: 100%;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      overflow-x: hidden;
+      margin: 0; padding: 0; background: var(--bg); color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, "Noto Sans";
     }
     a { color: inherit; text-decoration: none; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
-
-    canvas#bg-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
     .banner {
       position: relative;
-      padding: 120px 0 60px;
-      text-align: center;
+      background: radial-gradient(1200px 500px at 50% -20%, rgba(34,211,238,.25), transparent),
+                  radial-gradient(800px 400px at 80% 0%, rgba(167,139,250,.20), transparent),
+                  linear-gradient(180deg, #0b0f14 0%, #0b0f14 100%);
+      overflow: hidden;
+      padding: 80px 0 40px;
     }
     .glow {
-      position: absolute; inset: -20% -10% auto; height: 400px;
-      background: conic-gradient(from 90deg at 50% 50%, rgba(34,211,238,.15), rgba(167,139,250,.15), rgba(52,211,153,.15), rgba(34,211,238,.15));
-      filter: blur(140px); opacity: .6; animation: spin 24s linear infinite;
-      z-index: 1;
+      position: absolute; inset: -20% -10% auto; height: 320px;
+      background: conic-gradient(from 90deg at 50% 50%, rgba(34,211,238,.20), rgba(167,139,250,.20), rgba(52,211,153,.2), rgba(34,211,238,.20));
+      filter: blur(120px); opacity: .5; animation: spin 18s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    .hero { text-align: center; position: relative; }
     .pill {
       display: inline-flex; gap: 8px; align-items: center;
       background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
-      padding: 8px 14px; border-radius: 999px; color: var(--muted); font-size: 14px;
+      padding: 8px 12px; border-radius: 999px; color: var(--muted); font-size: 14px;
       backdrop-filter: blur(8px);
     }
-    .h1 { font-size: clamp(42px, 7vw, 80px); line-height: 1.05; margin: 20px 0 12px; font-weight: 800; }
-    .lead { font-size: clamp(18px, 2.5vw, 24px); color: var(--muted); margin-bottom: 12px; }
-    .sublead { font-size: 20px; color: var(--muted); opacity: 0.9; }
+    .h1 { font-size: clamp(36px, 6vw, 64px); line-height: 1.05; margin: 18px 0 10px; font-weight: 800; }
+    .lead { font-size: clamp(16px, 2.3vw, 20px); color: var(--muted); margin-bottom: 10px; }
+    .sublead { font-size: 18px; color: var(--muted); opacity: 0.9; }
 
     .type { position: relative; display: inline-block; border-right: 2px solid var(--brand); white-space: nowrap; overflow: hidden; }
     .type[data-typing="true"] { animation: caret 800ms steps(1) infinite; }
     @keyframes caret { 50% { border-color: transparent; } }
 
-    .btns { margin-top: 32px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .btn { padding: 14px 24px; border-radius: 14px; border: 1px solid rgba(255,255,255,.1); background: #0f141b; color: #fff; font-weight: 600; transition: all .3s; }
-    .btn:hover { box-shadow: var(--ring); transform: translateY(-2px); }
+    .btns { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,.1); background: #0f141b; color: #fff; font-weight: 600; transition: all .2s; }
+    .btn:hover { box-shadow: var(--ring); transform: translateY(-1px); }
     .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); border: none; }
 
-    section { padding: 100px 0; position: relative; z-index: 2; }
-    h2 { font-size: 36px; margin-bottom: 28px; text-align: center; }
+    section { padding: 80px 0; }
+    h2 { font-size: 32px; margin: 0 0 24px; }
     .muted { color: var(--muted); }
 
-    .chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
-    .chip { padding: 10px 16px; border-radius: 999px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); color: #d7dee7; font-size: 15px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .chip { padding: 8px 14px; border-radius: 999px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); color: #d7dee7; font-size: 14px; }
 
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
-    .stats-grid img { width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,.06); }
+    .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .card { background: var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; overflow: hidden; transition: transform .2s; }
+    .card:hover { transform: translateY(-4px); }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .card .p { padding: 20px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+    .tag { font-size: 12px; padding: 6px 10px; background: rgba(255,255,255,.06); border-radius: 999px; color: #c6d2de; }
+    .stars { font-size: 13px; color: var(--accent); margin: 8px 0; }
 
-    .grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
-    .card { background: var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: 20px; overflow: hidden; transition: transform .3s, box-shadow .3s; }
-    .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,.3); }
-    .card img { width: 100%; height: 200px; object-fit: cover; }
-    .card .p { padding: 24px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
-    .tag { font-size: 13px; padding: 7px 12px; background: rgba(255,255,255,.06); border-radius: 999px; color: #c6d2de; }
-    .stars { font-size: 14px; color: var(--accent); font-weight: 600; margin: 10px 0; }
+    footer { padding: 60px 0 80px; text-align: center; color: var(--muted); }
+    .socials { display: flex; gap: 16px; justify-content: center; margin-top: 16px; }
+    .icon-btn { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); transition: all .2s; }
+    .icon-btn:hover { box-shadow: var(--ring); transform: translateY(-2px); }
 
-    footer { padding: 80px 0; text-align: center; color: var(--muted); position: relative; z-index: 2; }
-    .socials { display: flex; gap: 18px; justify-content: center; margin-top: 20px; }
-    .icon-btn { width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 14px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); transition: all .3s; }
-    .icon-btn:hover { box-shadow: var(--ring); transform: translateY(-3px); }
+    ul { padding-left: 20px; line-height: 1.7; }
+    li { margin-bottom: 8px; }
 
-    @media (max-width: 640px) {
-      .btns { flex-direction: column; align-items: center; }
-      .btn { width: 80%; }
+    @media (max-width: 480px) {
+      .btn { width: 100%; justify-content: center; }
       .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <canvas id="bg-canvas"></canvas>
-
   <!-- Banner + Hero -->
   <header class="banner">
     <div class="glow" aria-hidden="true"></div>
-    <div class="container">
-      <div class="pill">Voice-First AI • Flutter • Real-Time • Cloud</div>
+    <div class="container hero">
+      <div class="pill">Voice-first AI • Flutter • Real-time • Cloud</div>
       <h1 class="h1">Hi, I'm <span style="background: linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent;">Naomer</span></h1>
-      <p class="lead">Building AI-native mobile experiences that feel natural</p>
+      <p class="lead">Building AI-native mobile experiences that feel natural.</p>
       <p class="sublead">
         <span class="type" id="type"></span>
       </p>
@@ -125,7 +115,7 @@
         <a class="btn primary" href="#projects">See Projects</a>
         <a class="btn" href="https://github.com/Naomer" target="_blank" rel="noopener">GitHub</a>
         <a class="btn" href="mailto:nahtheol@proton.me">Contact</a>
-        <a class="btn primary" href="/Naol_Mer_Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+        <a class="btn primary" href="/Naol_Mer_Resume.pdf" target="_blank" rel="noopener">View Resume</a>
       </div>
     </div>
   </header>
@@ -134,9 +124,7 @@
   <section id="about">
     <div class="container">
       <h2>About</h2>
-      <p class="muted" style="max-width: 800px; margin: 0 auto; font-size: 18px; line-height: 1.7;">
-        Passionate Flutter developer with 2+ years of hands-on experience building and maintaining real-world mobile apps — service marketplaces, e-commerce platforms, and AI-enhanced tools with Google Maps, multilingual (RTL) support, payment integrations, and cloud systems. Currently remote at Creative Codes (Saudi Arabia). Skilled in end-to-end development, API orchestration, Firebase/Supabase, and collaborative Agile workflows. Based in Addis Ababa, Ethiopia — remote-ready for global teams.
-      </p>
+      <p class="muted">I’m a Flutter developer and software engineer passionate about building high-performance, AI-powered mobile apps. With 2+ years shipping production apps, I specialize in voice-first AI, real-time features, and elegant UX — turning complex ideas into intuitive products using Flutter, FastAPI, Firebase, Supabase, and modern LLMs.</p>
       <div class="chips">
         <span class="chip">Flutter</span>
         <span class="chip">Dart</span>
@@ -146,31 +134,28 @@
         <span class="chip">Supabase</span>
         <span class="chip">Node.js</span>
         <span class="chip">AWS</span>
-        <span class="chip">OpenRouter LLMs</span>
+        <span class="chip">AI Integration</span>
         <span class="chip">Google Maps</span>
         <span class="chip">RTL</span>
       </div>
 
-      <div class="stats-grid">
-        <img src="https://github-readme-stats.vercel.app/api?username=Naomer&theme=tokyonight&hide_border=true&show_icons=true&count_private=true" alt="GitHub Stats" loading="lazy">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Naomer&theme=tokyonight&hide_border=true&layout=compact&count_private=true" alt="Top Languages" loading="lazy">
+      <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:32px; justify-content:center;">
+        <img src="https://github-readme-stats.vercel.app/api?username=Naomer&theme=tokyonight&hide_border=true&show_icons=true" alt="GitHub Stats" loading="lazy">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Naomer&theme=tokyonight&hide_border=true&layout=compact" alt="Top Languages" loading="lazy">
       </div>
-      <p class="muted" style="text-align:center; margin-top:12px; font-size:14px;">(If stats images don't load, try disabling ad-blocker or visit GitHub directly)</p>
     </div>
   </section>
 
   <!-- Experience -->
   <section id="experience">
     <div class="container">
-      <h2>Experience</h2>
-      <p class="muted" style="text-align:center; max-width:800px; margin:0 auto 32px; font-size:18px;">
-        Flutter Developer (Remote) — Creative Codes, Saudi Arabia<br>Aug 2024 – Present
-      </p>
-      <ul style="max-width:700px; margin:0 auto; font-size:17px; line-height:1.8;">
-        <li>Built & maintained cross-platform apps with Flutter/Dart, REST/GraphQL APIs, and Firebase real-time features</li>
-        <li>Managed full lifecycles in international remote Agile teams</li>
-        <li>Optimized UI/UX (multilingual, payments) — reduced load times by ~25%</li>
-        <li>Integrated third-party services & deployed to stores with major performance gains</li>
+      <h2>Selected Experience</h2>
+      <p class="muted" style="font-size:18px; margin-bottom:16px;">Freelance & Independent Developer · 2023–Present</p>
+      <ul>
+        <li>Shipped 6+ production-grade cross-platform mobile apps with Flutter</li>
+        <li>Built and integrated real-time voice AI (streaming, context memory, multimodal output)</li>
+        <li>Developed full-stack backends with FastAPI, Node.js, MongoDB, Firebase, Supabase, and AWS</li>
+        <li>Specialized in AI-enhanced mobile products and beautiful, performant UX</li>
       </ul>
     </div>
   </section>
@@ -180,7 +165,7 @@
     <div class="container">
       <h2>Featured Projects</h2>
       <div class="grid">
-        <!-- Same project cards as before, kept identical for brevity but with minor polish -->
+
         <!-- Lira -->
         <article class="card">
           <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/4801bf7ed6a659cbd266479d1139ae0ce308221a/lr.jpg" alt="Lira AI Voice Companion" loading="lazy">
@@ -204,70 +189,165 @@
           </div>
         </article>
 
-        <!-- Vee, Fitly, Task App, Digital Card – same as previous version -->
-        <!-- (Copy-paste the rest from my last response to keep them identical) -->
+        <!-- Vee -->
+        <article class="card">
+          <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/be967035b20c740bcccbde6534074dcb29dc433e/IMG_7150.JPG" alt="Vee Space Explorer" loading="lazy">
+          <div class="p">
+            <h3>Vee — Space Exploration App</h3>
+            <p class="muted">Flutter app integrating NASA APIs (APOD, Mars rover, ISS tracker) with an AI-powered voice chatbot.</p>
+            <p class="muted" style="font-size:14px; line-height:1.5;">
+              • Real-time space data + conversational AI<br>
+              • Dark/light themes with smooth animations
+            </p>
+            <div class="stars">⭐ 21 stars • 6 forks</div>
+            <div class="tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">NASA API</span>
+              <span class="tag">AI Chatbot</span>
+              <span class="tag">Voice Input</span>
+            </div>
+            <p><a class="btn" href="https://github.com/Naomer/Vee" target="_blank" rel="noopener">View Code</a></p>
+          </div>
+        </article>
+
+        <!-- Fitly -->
+        <article class="card">
+          <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/4801bf7ed6a659cbd266479d1139ae0ce308221a/ftly.png" alt="Fitly Fitness App" loading="lazy">
+          <div class="p">
+            <h3>Fitly — Fitness Tracking App</h3>
+            <p class="muted">Modern dark-themed fitness tracker with workout logging, muscle group progress, and animated UI.</p>
+            <p class="muted" style="font-size:14px;">• Intuitive workout tracking & progress visualization<br>• Built with Provider and flutter_animate</p>
+            <div class="stars">⭐ 14 stars • 1 fork</div>
+            <div class="tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+              <span class="tag">Fitness</span>
+            </div>
+            <p><a class="btn" href="https://github.com/Naomer/fitly" target="_blank" rel="noopener">View Code</a></p>
+          </div>
+        </article>
+
+        <!-- Task App -->
+        <article class="card">
+          <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/be967035b20c740bcccbde6534074dcb29dc433e/IMG_7151.JPG" alt="Task App" loading="lazy">
+          <div class="p">
+            <h3>Task App — Service Marketplace</h3>
+            <p class="muted">Flutter app connecting service providers and clients with Google Maps, live tracking, and full Arabic RTL support.</p>
+            <p class="muted" style="font-size:14px;">• Full-stack with Node.js backend, MongoDB, and AWS</p>
+            <div class="stars">⭐ 11 stars • 1 fork</div>
+            <div class="tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Google Maps</span>
+              <span class="tag">RTL</span>
+            </div>
+            <p><a class="btn" href="https://github.com/Naomer/tskapp" target="_blank" rel="noopener">View Code</a></p>
+          </div>
+        </article>
+
+        <!-- Digital Card -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" alt="Digital Card e-commerce" loading="lazy">
+          <div class="p">
+            <h3>Digital Card — E-Commerce App</h3>
+            <p class="muted">Flutter e-commerce app replicating Alsaif Gallery UI/UX with cart, wishlist, and authentication.</p>
+            <p class="muted" style="font-size:14px;">• Full-stack Node.js backend with MongoDB and AWS hosting</p>
+            <div class="stars">⭐ 12 stars • 2 forks</div>
+            <div class="tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">AWS</span>
+            </div>
+            <p><a class="btn" href="https://github.com/Naomer/dgcard" target="_blank" rel="noopener">View Code</a></p>
+          </div>
+        </article>
 
       </div>
     </div>
   </section>
 
-  <!-- Fun Facts, Contact, Footer – same as previous, with minor spacing tweaks -->
+  <!-- Fun Facts -->
+  <section id="fun">
+    <div class="container">
+      <h2>Fun Facts</h2>
+      <ul class="muted">
+        <li>I built Lira because I was tired of typing to AI assistants — now I just talk.</li>
+        <li>Obsessed with space tech (hence Vee) and bringing NASA data to mobile.</li>
+        <li>From Ethiopia, passionate about supporting underrepresented languages in AI.</li>
+        <li>You won’t find me in Fortnite 😁</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="muted">Have a project in mind? Let’s build something great.</p>
+      <div class="chips">
+        <a class="chip" href="mailto:nahtheol@proton.me">Email</a>
+        <a class="chip" href="https://wa.me/251940413977" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="chip" href="https://x.com/nahtheol" target="_blank" rel="noopener">X (Twitter)</a>
+        <a class="chip" href="https://linkedin.com/in/olliemer" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <form action="https://formspree.io/f/mvgqnygp" method="POST" style="display:grid; gap:14px; max-width:560px; margin-top:32px;">
+        <input name="name" placeholder="Your name" required style="padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f141b; color:#fff;" />
+        <input type="email" name="email" placeholder="Your email" required style="padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f141b; color:#fff;" />
+        <textarea name="message" placeholder="Tell me about your idea" rows="6" required style="padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f141b; color:#fff; resize:vertical;"></textarea>
+        <button class="btn primary" style="width:max-content; justify-self:start;">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div>© <span id="year"></span> Naomer. All rights reserved.</div>
+      <div class="socials">
+        <a class="icon-btn" href="https://github.com/Naomer" target="_blank" aria-label="GitHub" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.26.82-.577v-2.234c-3.338.726-4.033-1.61-4.033-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.776.418-1.305.762-1.605-2.665-.3-5.467-1.332-5.467-5.932 0-1.31.468-2.382 1.236-3.222-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.234 1.912 1.234 3.222 0 4.61-2.807 5.628-5.479 5.922.43.37.823 1.102.823 2.222v3.293c0 .319.218.694.825.576C20.565 21.796 24 17.298 24 12c0-6.63-5.373-12-12-12z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://x.com/nahtheol" target="_blank" aria-label="X" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.52 8.58L22.5 22h-6.2l-4.86-5.64L5.8 22H2.5l8.04-9.17L1.9 2h6.3l4.39 5.02L18.24 2Zm-1.09 18h1.86L7.93 4h-1.9l11.11 16Z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://linkedin.com/in/olliemer" target="_blank" aria-label="LinkedIn" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM0 8.5h5v15H0v-15ZM8 8.5h4.8v2.1h.1c.7-1.3 2.5-2.7 5.1-2.7 5.4 0 6.4 3.5 6.4 8.1V23.5h-5v-7.3c0-1.7 0-3.9-2.4-3.9s-2.8 1.9-2.8 3.8v7.4H8v-15Z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://instagram.com/nahtheol" target="_blank" aria-label="Instagram" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5ZM18 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    // Canvas background: floating subtle squares
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-    let width, height;
-
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    const squares = [];
-    const count = 40;
-    for (let i = 0; i < count; i++) {
-      squares.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        size: Math.random() * 50 + 20,
-        speedY: Math.random() * 0.8 + 0.2,
-        speedX: (Math.random() - 0.5) * 0.4,
-        opacity: Math.random() * 0.2 + 0.05,
-        rotation: 0,
-        rotSpeed: (Math.random() - 0.5) * 0.02
-      });
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      squares.forEach(s => {
-        ctx.save();
-        ctx.translate(s.x + s.size/2, s.y + s.size/2);
-        ctx.rotate(s.rotation);
-        ctx.fillStyle = `rgba(34, 211, 238, ${s.opacity})`;
-        ctx.fillRect(-s.size/2, -s.size/2, s.size, s.size);
-        ctx.restore();
-
-        s.y += s.speedY;
-        s.x += s.speedX;
-        s.rotation += s.rotSpeed;
-
-        if (s.y > height) s.y = -s.size;
-        if (s.x > width) s.x = -s.size;
-        if (s.x < -s.size) s.x = width;
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    // Typewriter & year scripts unchanged
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const phrases = ["Voice-First AI Builder","Flutter • AI • Mobile","Real-time experiences","Open-source enthusiast"];
-    // ... rest of typewriter code from previous
+    const phrases = [
+      "Voice-First AI Builder",
+      "Flutter • AI • Mobile",
+      "Real-time experiences",
+      "Open-source enthusiast"
+    ];
+    const typeEl = document.getElementById('type');
+    let i = 0, char = 0, typing = true;
+
+    function loop(){
+      const current = phrases[i];
+      if(typing){
+        typeEl.dataset.typing = "true";
+        typeEl.textContent = current.slice(0, ++char);
+        if(char === current.length){ typing = false; setTimeout(loop, 1500); return; }
+        setTimeout(loop, 60);
+      } else {
+        typeEl.dataset.typing = "false";
+        typeEl.textContent = current.slice(0, --char);
+        if(char === 0){ typing = true; i = (i+1) % phrases.length; }
+        setTimeout(loop, 35);
+      }
+    }
+    loop();
   </script>
 </body>
 </html>

@@ -27,87 +27,97 @@
       --accent: #34d399;
       --ring: 0 0 0 2px rgba(34,211,238,.35);
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      margin: 0; padding: 0; background: var(--bg); color: var(--text);
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, "Noto Sans";
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+
+    canvas#bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
 
     .banner {
       position: relative;
-      background: radial-gradient(1200px 500px at 50% -20%, rgba(34,211,238,.25), transparent),
-                  radial-gradient(800px 400px at 80% 0%, rgba(167,139,250,.20), transparent),
-                  linear-gradient(180deg, #0b0f14 0%, #0b0f14 100%);
-      overflow: hidden;
-      padding: 80px 0 40px;
+      padding: 120px 0 60px;
+      text-align: center;
     }
     .glow {
-      position: absolute; inset: -20% -10% auto; height: 320px;
-      background: conic-gradient(from 90deg at 50% 50%, rgba(34,211,238,.20), rgba(167,139,250,.20), rgba(52,211,153,.2), rgba(34,211,238,.20));
-      filter: blur(120px); opacity: .5; animation: spin 18s linear infinite;
+      position: absolute; inset: -20% -10% auto; height: 400px;
+      background: conic-gradient(from 90deg at 50% 50%, rgba(34,211,238,.15), rgba(167,139,250,.15), rgba(52,211,153,.15), rgba(34,211,238,.15));
+      filter: blur(140px); opacity: .6; animation: spin 24s linear infinite;
+      z-index: 1;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    .hero { text-align: center; position: relative; }
     .pill {
       display: inline-flex; gap: 8px; align-items: center;
       background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
-      padding: 8px 12px; border-radius: 999px; color: var(--muted); font-size: 14px;
+      padding: 8px 14px; border-radius: 999px; color: var(--muted); font-size: 14px;
       backdrop-filter: blur(8px);
     }
-    .h1 { font-size: clamp(36px, 6vw, 64px); line-height: 1.05; margin: 18px 0 10px; font-weight: 800; }
-    .lead { font-size: clamp(16px, 2.3vw, 20px); color: var(--muted); margin-bottom: 10px; }
-    .sublead { font-size: 18px; color: var(--muted); opacity: 0.9; }
+    .h1 { font-size: clamp(42px, 7vw, 80px); line-height: 1.05; margin: 20px 0 12px; font-weight: 800; }
+    .lead { font-size: clamp(18px, 2.5vw, 24px); color: var(--muted); margin-bottom: 12px; }
+    .sublead { font-size: 20px; color: var(--muted); opacity: 0.9; }
 
     .type { position: relative; display: inline-block; border-right: 2px solid var(--brand); white-space: nowrap; overflow: hidden; }
     .type[data-typing="true"] { animation: caret 800ms steps(1) infinite; }
     @keyframes caret { 50% { border-color: transparent; } }
 
-    .btns { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn { padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,.1); background: #0f141b; color: #fff; font-weight: 600; transition: all .2s; }
-    .btn:hover { box-shadow: var(--ring); transform: translateY(-1px); }
+    .btns { margin-top: 32px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 14px 24px; border-radius: 14px; border: 1px solid rgba(255,255,255,.1); background: #0f141b; color: #fff; font-weight: 600; transition: all .3s; }
+    .btn:hover { box-shadow: var(--ring); transform: translateY(-2px); }
     .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); border: none; }
 
-    section { padding: 80px 0; }
-    h2 { font-size: 32px; margin: 0 0 24px; }
+    section { padding: 100px 0; position: relative; z-index: 2; }
+    h2 { font-size: 36px; margin-bottom: 28px; text-align: center; }
     .muted { color: var(--muted); }
 
-    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    .chip { padding: 8px 14px; border-radius: 999px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); color: #d7dee7; font-size: 14px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
+    .chip { padding: 10px 16px; border-radius: 999px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); color: #d7dee7; font-size: 15px; }
 
-    .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-    .card { background: var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; overflow: hidden; transition: transform .2s; }
-    .card:hover { transform: translateY(-4px); }
-    .card img { width: 100%; height: 180px; object-fit: cover; }
-    .card .p { padding: 20px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
-    .tag { font-size: 12px; padding: 6px 10px; background: rgba(255,255,255,.06); border-radius: 999px; color: #c6d2de; }
-    .stars { font-size: 13px; color: var(--accent); margin: 8px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+    .stats-grid img { width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,.06); }
 
-    footer { padding: 60px 0 80px; text-align: center; color: var(--muted); }
-    .socials { display: flex; gap: 16px; justify-content: center; margin-top: 16px; }
-    .icon-btn { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); transition: all .2s; }
-    .icon-btn:hover { box-shadow: var(--ring); transform: translateY(-2px); }
+    .grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+    .card { background: var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: 20px; overflow: hidden; transition: transform .3s, box-shadow .3s; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,.3); }
+    .card img { width: 100%; height: 200px; object-fit: cover; }
+    .card .p { padding: 24px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
+    .tag { font-size: 13px; padding: 7px 12px; background: rgba(255,255,255,.06); border-radius: 999px; color: #c6d2de; }
+    .stars { font-size: 14px; color: var(--accent); font-weight: 600; margin: 10px 0; }
 
-    ul { padding-left: 20px; line-height: 1.7; }
-    li { margin-bottom: 8px; }
+    footer { padding: 80px 0; text-align: center; color: var(--muted); position: relative; z-index: 2; }
+    .socials { display: flex; gap: 18px; justify-content: center; margin-top: 20px; }
+    .icon-btn { width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 14px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); transition: all .3s; }
+    .icon-btn:hover { box-shadow: var(--ring); transform: translateY(-3px); }
 
-    @media (max-width: 480px) {
-      .btn { width: 100%; justify-content: center; }
+    @media (max-width: 640px) {
+      .btns { flex-direction: column; align-items: center; }
+      .btn { width: 80%; }
       .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+  <canvas id="bg-canvas"></canvas>
+
   <!-- Banner + Hero -->
   <header class="banner">
     <div class="glow" aria-hidden="true"></div>
-    <div class="container hero">
-      <div class="pill">Voice-first AI • Flutter • Real-time • Cloud</div>
+    <div class="container">
+      <div class="pill">Voice-First AI • Flutter • Real-Time • Cloud</div>
       <h1 class="h1">Hi, I'm <span style="background: linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent;">Naomer</span></h1>
-      <p class="lead">Building AI-native mobile experiences that feel natural.</p>
+      <p class="lead">Building AI-native mobile experiences that feel natural</p>
       <p class="sublead">
         <span class="type" id="type"></span>
       </p>
@@ -115,7 +125,7 @@
         <a class="btn primary" href="#projects">See Projects</a>
         <a class="btn" href="https://github.com/Naomer" target="_blank" rel="noopener">GitHub</a>
         <a class="btn" href="mailto:nahtheol@proton.me">Contact</a>
-        <a class="btn primary" href="/Naol_Mer_Resume.pdf" target="_blank" rel="noopener">View Resume</a>
+        <a class="btn primary" href="/Naol_Mer_Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
       </div>
     </div>
   </header>
@@ -124,7 +134,9 @@
   <section id="about">
     <div class="container">
       <h2>About</h2>
-      <p class="muted">I’m a Flutter developer and software engineer passionate about building high-performance, AI-powered mobile apps. With 2+ years shipping production apps, I specialize in voice-first AI, real-time features, and elegant UX — turning complex ideas into intuitive products using Flutter, FastAPI, Firebase, Supabase, and modern LLMs.</p>
+      <p class="muted" style="max-width: 800px; margin: 0 auto; font-size: 18px; line-height: 1.7;">
+        Passionate Flutter developer with 2+ years of hands-on experience building and maintaining real-world mobile apps — service marketplaces, e-commerce platforms, and AI-enhanced tools with Google Maps, multilingual (RTL) support, payment integrations, and cloud systems. Currently remote at Creative Codes (Saudi Arabia). Skilled in end-to-end development, API orchestration, Firebase/Supabase, and collaborative Agile workflows. Based in Addis Ababa, Ethiopia — remote-ready for global teams.
+      </p>
       <div class="chips">
         <span class="chip">Flutter</span>
         <span class="chip">Dart</span>
@@ -134,20 +146,16 @@
         <span class="chip">Supabase</span>
         <span class="chip">Node.js</span>
         <span class="chip">AWS</span>
-        <span class="chip">AI Integration</span>
+        <span class="chip">OpenRouter LLMs</span>
         <span class="chip">Google Maps</span>
         <span class="chip">RTL</span>
       </div>
 
-      <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:32px; justify-content:center;">
-        <img src="https://github-readme-stats.vercel.app/api?username=Naomer&theme=tokyonight&hide_border=true&show_icons=true" alt="GitHub Stats" loading="lazy">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Naomer&theme=tokyonight&hide_border=true&layout=compact" alt="Top Languages" loading="lazy">
-      </div>
-    </div>
+    
   </section>
 
   <!-- Experience -->
-  <section id="experience">
+ <section id="experience">
     <div class="container">
       <h2>Selected Experience</h2>
       <p class="muted" style="font-size:18px; margin-bottom:16px;">Freelance & Independent Developer · 2023–Present</p>
@@ -347,7 +355,6 @@
         setTimeout(loop, 35);
       }
     }
-    loop();
-  </script>
+    loop();</script>
 </body>
 </html>

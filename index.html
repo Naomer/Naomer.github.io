@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   
-  <meta name="description" content="Naomer — Building AI-native mobile experiences with Flutter. Creator of Lira (real-time voice AI companion).">
+  <meta name="description" content="Naomer — Flutter developer building AI-native mobile apps. Creator of Lira (real-time voice-first AI companion).">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -84,9 +84,6 @@
     .chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
     .chip { padding: 10px 16px; border-radius: 999px; background: #0f141b; border: 1px solid rgba(255,255,255,.08); color: #d7dee7; font-size: 15px; }
 
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
-    .stats-grid img { width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,.06); }
-
     .grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
     .card { background: var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: 20px; overflow: hidden; transition: transform .3s, box-shadow .3s; }
     .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,.3); }
@@ -95,6 +92,10 @@
     .tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
     .tag { font-size: 13px; padding: 7px 12px; background: rgba(255,255,255,.06); border-radius: 999px; color: #c6d2de; }
     .stars { font-size: 14px; color: var(--accent); font-weight: 600; margin: 10px 0; }
+
+    ul.muted { max-width: 700px; margin: 0 auto; list-style: none; }
+    ul.muted li { font-size: 17px; line-height: 1.8; margin-bottom: 16px; position: relative; padding-left: 24px; }
+    ul.muted li::before { content: "→"; position: absolute; left: 0; color: var(--brand); }
 
     footer { padding: 80px 0; text-align: center; color: var(--muted); position: relative; z-index: 2; }
     .socials { display: flex; gap: 18px; justify-content: center; margin-top: 20px; }
@@ -111,7 +112,7 @@
 <body>
   <canvas id="bg-canvas"></canvas>
 
-  <!-- Banner + Hero -->
+  <!-- Hero -->
   <header class="banner">
     <div class="glow" aria-hidden="true"></div>
     <div class="container">
@@ -130,12 +131,15 @@
     </div>
   </header>
 
-  <!-- About + Stats -->
+  <!-- About -->
   <section id="about">
     <div class="container">
       <h2>About</h2>
-      <p class="muted" style="max-width: 800px; margin: 0 auto; font-size: 18px; line-height: 1.7;">
-        Passionate Flutter developer with 2+ years of hands-on experience building and maintaining real-world mobile apps — service marketplaces, e-commerce platforms, and AI-enhanced tools with Google Maps, multilingual (RTL) support, payment integrations, and cloud systems. Currently remote at Creative Codes (Saudi Arabia). Skilled in end-to-end development, API orchestration, Firebase/Supabase, and collaborative Agile workflows. Based in Addis Ababa, Ethiopia — remote-ready for global teams.
+      <p class="muted" style="max-width: 800px; margin: 0 auto 32px; font-size: 18px; line-height: 1.7;">
+        Passionate Flutter developer with 2+ years of hands-on experience building real-world mobile apps — service marketplaces, e-commerce, fitness trackers, space explorers, and voice-first AI companions. Currently remote at Creative Codes (Saudi Arabia), shipping cross-platform apps with real-time features, multilingual RTL, payments, Google Maps, and cloud backends.
+      </p>
+      <p class="muted" style="max-width: 800px; margin: 0 auto 32px; font-size: 18px; line-height: 1.7;">
+        Based in Addis Ababa, Ethiopia — remote-ready for global teams. Focused on turning complex AI ideas into intuitive, performant products.
       </p>
       <div class="chips">
         <span class="chip">Flutter</span>
@@ -146,24 +150,25 @@
         <span class="chip">Supabase</span>
         <span class="chip">Node.js</span>
         <span class="chip">AWS</span>
-        <span class="chip">OpenRouter LLMs</span>
+        <span class="chip">OpenRouter</span>
         <span class="chip">Google Maps</span>
         <span class="chip">RTL</span>
       </div>
-
-    
+    </div>
   </section>
 
   <!-- Experience -->
- <section id="experience">
+  <section id="experience">
     <div class="container">
-      <h2>Selected Experience</h2>
-      <p class="muted" style="font-size:18px; margin-bottom:16px;">Freelance & Independent Developer · 2023–Present</p>
-      <ul>
-        <li>Shipped 6+ production-grade cross-platform mobile apps with Flutter</li>
-        <li>Built and integrated real-time voice AI (streaming, context memory, multimodal output)</li>
-        <li>Developed full-stack backends with FastAPI, Node.js, MongoDB, Firebase, Supabase, and AWS</li>
-        <li>Specialized in AI-enhanced mobile products and beautiful, performant UX</li>
+      <h2>Experience</h2>
+      <p class="muted" style="text-align:center; max-width:800px; margin:0 auto 32px; font-size:18px;">
+        Flutter Developer (Remote) — Creative Codes, Saudi Arabia<br>Aug 2024 – Present
+      </p>
+      <ul class="muted">
+        <li>Built & maintained cross-platform apps with Flutter/Dart, REST/GraphQL APIs, and Firebase real-time features</li>
+        <li>Managed full project lifecycles in international remote Agile teams</li>
+        <li>Optimized UI/UX for multilingual support and payment gateways — reduced load times by ~25%</li>
+        <li>Integrated third-party services (payments, ML models) and deployed to stores with performance gains</li>
       </ul>
     </div>
   </section>
@@ -179,19 +184,18 @@
           <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/4801bf7ed6a659cbd266479d1139ae0ce308221a/lr.jpg" alt="Lira AI Voice Companion" loading="lazy">
           <div class="p">
             <h3>Lira — Real-Time Voice-First AI Companion</h3>
-            <p class="muted">End-to-end voice AI that listens continuously, maintains context, responds naturally, and generates images on demand.</p>
+            <p class="muted">Always-on voice buddy (like ChatGPT voice but cozier) with continuous listening, context memory, natural responses, and image generation.</p>
             <p class="muted" style="font-size:14px; line-height:1.5;">
-              • Low-latency streaming audio & multimodal output<br>
-              • Flutter frontend + FastAPI backend + OpenRouter LLMs<br>
-              • Personal daily assistant
+              • Low-latency streaming + multimodal output<br>
+              • Flutter + FastAPI + OpenRouter LLMs<br>
+              • Privacy-first, supports accents & underrepresented languages
             </p>
             <div class="stars">⭐ 14 stars • 2 forks</div>
             <div class="tags">
               <span class="tag">Flutter</span>
-              <span class="tag">Dart</span>
               <span class="tag">FastAPI</span>
-              <span class="tag">AI</span>
-              <span class="tag">Voice</span>
+              <span class="tag">Voice AI</span>
+              <span class="tag">OpenRouter</span>
             </div>
             <p><a class="btn" href="https://github.com/Naomer/lira" target="_blank" rel="noopener">View Code</a></p>
           </div>
@@ -202,17 +206,18 @@
           <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/be967035b20c740bcccbde6534074dcb29dc433e/IMG_7150.JPG" alt="Vee Space Explorer" loading="lazy">
           <div class="p">
             <h3>Vee — Space Exploration App</h3>
-            <p class="muted">Flutter app integrating NASA APIs (APOD, Mars rover, ISS tracker) with an AI-powered voice chatbot.</p>
+            <p class="muted">NASA APIs (APOD, Mars rover, ISS tracker) + voice-to-text AI chatbot for conversational space discovery.</p>
             <p class="muted" style="font-size:14px; line-height:1.5;">
-              • Real-time space data + conversational AI<br>
-              • Dark/light themes with smooth animations
+              • Real-time space data & tracking<br>
+              • Dark/light themes with smooth animations<br>
+              • Firebase backend
             </p>
             <div class="stars">⭐ 21 stars • 6 forks</div>
             <div class="tags">
               <span class="tag">Flutter</span>
               <span class="tag">NASA API</span>
               <span class="tag">AI Chatbot</span>
-              <span class="tag">Voice Input</span>
+              <span class="tag">Voice</span>
             </div>
             <p><a class="btn" href="https://github.com/Naomer/Vee" target="_blank" rel="noopener">View Code</a></p>
           </div>
@@ -223,13 +228,17 @@
           <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/4801bf7ed6a659cbd266479d1139ae0ce308221a/ftly.png" alt="Fitly Fitness App" loading="lazy">
           <div class="p">
             <h3>Fitly — Fitness Tracking App</h3>
-            <p class="muted">Modern dark-themed fitness tracker with workout logging, muscle group progress, and animated UI.</p>
-            <p class="muted" style="font-size:14px;">• Intuitive workout tracking & progress visualization<br>• Built with Provider and flutter_animate</p>
+            <p class="muted">Modern dark-themed fitness tracker with workout logging, muscle progress, timers, and animated UI.</p>
+            <p class="muted" style="font-size:14px; line-height:1.5;">
+              • Intuitive tracking & progress visualization<br>
+              • Provider + flutter_animate<br>
+              • Supabase auth & realtime DB
+            </p>
             <div class="stars">⭐ 14 stars • 1 fork</div>
             <div class="tags">
               <span class="tag">Flutter</span>
-              <span class="tag">Dart</span>
               <span class="tag">Fitness</span>
+              <span class="tag">Supabase</span>
             </div>
             <p><a class="btn" href="https://github.com/Naomer/fitly" target="_blank" rel="noopener">View Code</a></p>
           </div>
@@ -240,14 +249,17 @@
           <img src="https://raw.githubusercontent.com/Naomer/Naomer.github.io/be967035b20c740bcccbde6534074dcb29dc433e/IMG_7151.JPG" alt="Task App" loading="lazy">
           <div class="p">
             <h3>Task App — Service Marketplace</h3>
-            <p class="muted">Flutter app connecting service providers and clients with Google Maps, live tracking, and full Arabic RTL support.</p>
-            <p class="muted" style="font-size:14px;">• Full-stack with Node.js backend, MongoDB, and AWS</p>
+            <p class="muted">Provider/client marketplace with Google Maps, live tracking, bookings, and full Arabic RTL support.</p>
+            <p class="muted" style="font-size:14px; line-height:1.5;">
+              • Node.js + MongoDB + AWS backend<br>
+              • Real-time notifications & auth<br>
+              • 40% faster navigation in beta
+            </p>
             <div class="stars">⭐ 11 stars • 1 fork</div>
             <div class="tags">
               <span class="tag">Flutter</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">MongoDB</span>
               <span class="tag">Google Maps</span>
+              <span class="tag">Node.js</span>
               <span class="tag">RTL</span>
             </div>
             <p><a class="btn" href="https://github.com/Naomer/tskapp" target="_blank" rel="noopener">View Code</a></p>
@@ -259,8 +271,11 @@
           <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" alt="Digital Card e-commerce" loading="lazy">
           <div class="p">
             <h3>Digital Card — E-Commerce App</h3>
-            <p class="muted">Flutter e-commerce app replicating Alsaif Gallery UI/UX with cart, wishlist, and authentication.</p>
-            <p class="muted" style="font-size:14px;">• Full-stack Node.js backend with MongoDB and AWS hosting</p>
+            <p class="muted">Alsaif Gallery-inspired shopping experience: catalogs, cart, wishlist, checkout.</p>
+            <p class="muted" style="font-size:14px; line-height:1.5;">
+              • Node.js backend + MongoDB<br>
+              • AWS hosting & fast loads across devices
+            </p>
             <div class="stars">⭐ 12 stars • 2 forks</div>
             <div class="tags">
               <span class="tag">Flutter</span>
@@ -281,9 +296,9 @@
     <div class="container">
       <h2>Fun Facts</h2>
       <ul class="muted">
-        <li>I built Lira because I was tired of typing to AI assistants — now I just talk.</li>
-        <li>Obsessed with space tech (hence Vee) and bringing NASA data to mobile.</li>
-        <li>From Ethiopia, passionate about supporting underrepresented languages in AI.</li>
+        <li>I built Lira because I was tired of typing — now I just talk to my phone</li>
+        <li>Space tech obsessed (that's why Vee exists)</li>
+        <li>From Ethiopia, passionate about better AI support for underrepresented languages & accents</li>
         <li>You won’t find me in Fortnite 😁</li>
       </ul>
     </div>
@@ -293,25 +308,22 @@
   <section id="contact">
     <div class="container">
       <h2>Contact</h2>
-      <p class="muted">Have a project in mind? Let’s build something great.</p>
+      <p class="muted" style="max-width: 700px; margin: 0 auto 32px; font-size: 18px;">
+        Have a project in mind? Let's build something great together.
+      </p>
       <div class="chips">
         <a class="chip" href="mailto:nahtheol@proton.me">Email</a>
         <a class="chip" href="https://wa.me/251940413977" target="_blank" rel="noopener">WhatsApp</a>
         <a class="chip" href="https://x.com/nahtheol" target="_blank" rel="noopener">X (Twitter)</a>
         <a class="chip" href="https://linkedin.com/in/olliemer" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-      <form action="https://formspree.io/f/mvgqnygp" method="POST" style="display:grid; gap:14px; max-width:560px; margin-top:32px;">
-        <input name="name" placeholder="Your name" required style="padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f141b; color:#fff;" />
-        <input type="email" name="email" placeholder="Your email" required style="padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f141b; color:#fff;" />
-        <textarea name="message" placeholder="Tell me about your idea" rows="6" required style="padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f141b; color:#fff; resize:vertical;"></textarea>
-        <button class="btn primary" style="width:max-content; justify-self:start;">Send Message</button>
-      </form>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
-      <div>© <span id="year"></span> Naomer. All rights reserved.</div>
+      <p>© <span id="year"></span> Naomer. All rights reserved.</p>
       <div class="socials">
         <a class="icon-btn" href="https://github.com/Naomer" target="_blank" aria-label="GitHub" rel="noopener">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.26.82-.577v-2.234c-3.338.726-4.033-1.61-4.033-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.776.418-1.305.762-1.605-2.665-.3-5.467-1.332-5.467-5.932 0-1.31.468-2.382 1.236-3.222-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.234 1.912 1.234 3.222 0 4.61-2.807 5.628-5.479 5.922.43.37.823 1.102.823 2.222v3.293c0 .319.218.694.825.576C20.565 21.796 24 17.298 24 12c0-6.63-5.373-12-12-12z"/></svg>
@@ -322,16 +334,64 @@
         <a class="icon-btn" href="https://linkedin.com/in/olliemer" target="_blank" aria-label="LinkedIn" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM0 8.5h5v15H0v-15ZM8 8.5h4.8v2.1h.1c.7-1.3 2.5-2.7 5.1-2.7 5.4 0 6.4 3.5 6.4 8.1V23.5h-5v-7.3c0-1.7 0-3.9-2.4-3.9s-2.8 1.9-2.8 3.8v7.4H8v-15Z"/></svg>
         </a>
-        <a class="icon-btn" href="https://instagram.com/nahtheol" target="_blank" aria-label="Instagram" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5ZM18 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"/></svg>
-        </a>
       </div>
     </div>
   </footer>
 
   <script>
+    // Canvas floating squares
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const squares = [];
+    const count = 40;
+    for (let i = 0; i < count; i++) {
+      squares.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 50 + 20,
+        speedY: Math.random() * 0.8 + 0.2,
+        speedX: (Math.random() - 0.5) * 0.4,
+        opacity: Math.random() * 0.2 + 0.05,
+        rotation: 0,
+        rotSpeed: (Math.random() - 0.5) * 0.02
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      squares.forEach(s => {
+        ctx.save();
+        ctx.translate(s.x + s.size/2, s.y + s.size/2);
+        ctx.rotate(s.rotation);
+        ctx.fillStyle = `rgba(34, 211, 238, ${s.opacity})`;
+        ctx.fillRect(-s.size/2, -s.size/2, s.size, s.size);
+        ctx.restore();
+
+        s.y += s.speedY;
+        s.x += s.speedX;
+        s.rotation += s.rotSpeed;
+
+        if (s.y > height) s.y = -s.size;
+        if (s.x > width + s.size) s.x = -s.size;
+        if (s.x < -s.size) s.x = width;
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Typewriter
     const phrases = [
       "Voice-First AI Builder",
       "Flutter • AI • Mobile",
@@ -341,20 +401,28 @@
     const typeEl = document.getElementById('type');
     let i = 0, char = 0, typing = true;
 
-    function loop(){
+    function loop() {
       const current = phrases[i];
-      if(typing){
+      if (typing) {
         typeEl.dataset.typing = "true";
         typeEl.textContent = current.slice(0, ++char);
-        if(char === current.length){ typing = false; setTimeout(loop, 1500); return; }
+        if (char === current.length) {
+          typing = false;
+          setTimeout(loop, 1500);
+          return;
+        }
         setTimeout(loop, 60);
       } else {
         typeEl.dataset.typing = "false";
         typeEl.textContent = current.slice(0, --char);
-        if(char === 0){ typing = true; i = (i+1) % phrases.length; }
+        if (char === 0) {
+          typing = true;
+          i = (i + 1) % phrases.length;
+        }
         setTimeout(loop, 35);
       }
     }
-    loop();</script>
+    loop();
+  </script>
 </body>
 </html>

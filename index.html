@@ -51,15 +51,22 @@
       -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, black 10%, transparent 90%);
       mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 10%, transparent 90%);
     }
-
-    .hero-glow {
+ .hero-glow {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 600px;
+      background: radial-gradient(circle at 50% 0%, var(--brand-glow) 0%, rgba(13, 17, 23, 0) 70%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    /* .hero-glow {
       position: fixed;
       inset: 0;
       height: 600px;
       background: radial-gradient(circle at 50% 20%, var(--brand-glow) 0%, transparent 70%);
       z-index: 1;
       pointer-events: none;
-    }
+    } */
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 10; }
 

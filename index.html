@@ -273,6 +273,27 @@
       .btn { width: 80%; }
       .grid { grid-template-columns: 1fr; }
     }
+    /* Fix social icons color */
+footer .icon-btn svg {
+  color: var(--text); /* use your theme text color */
+  fill: currentColor;
+  transition: color .3s;
+}
+
+footer .icon-btn:hover svg {
+  color: var(--brand); /* green glow on hover */
+}
+
+/* Fix contact chips links */
+.chips a {
+  text-decoration: none;  /* remove underline */
+  color: inherit;         /* inherit chip color */
+}
+
+/* Optional: add hover effect for chips */
+.chips a:hover {
+  background: rgba(63, 185, 80, .15);
+}
   </style>
 </head>
 <body>
